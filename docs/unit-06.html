@@ -61,6 +61,18 @@
 <li>量測校正前後暗角比。</li>
 <li>確認四通道各自 ≥0.9。</li>
 </ol>
+<h2>EMVA 1288 對應：空間均勻性（PRNU/DSNU）</h2>
+<p><strong>EMVA 1288</strong> 是感測器層的標準量測（QE、飽和、雜訊、動態範圍）。它定義了「感測器送出 RAW 的品質天花板」——以下與本單元對應的規範、公式與調校方向。</p>
+<table>
+<tr><th>EMVA 1288 參數</th><th>公式/定義</th><th>本單元驗證</th></tr>
+<tr><td><strong>PRNU</strong></td><td><code>PRNU = σ_spatial(light) / μ_light</code></td><td>暗角/LSC 的感測器成分</td></tr><tr><td><strong>DSNU</strong></td><td><code>DSNU = σ_spatial(dark)</code></td><td>黑位不均/固定圖樣</td></tr>
+</table>
+<div class="callout warn"><strong>數值很差時怎麼調（暗角比低）：</strong>
+<ul>
+<li><strong>現象</strong>：暗角可能混合了鏡頭 shading（cos⁴）與感測器 PRNU。</li>
+<li><strong>調校方向</strong>：先用 EMVA 均勻照明量 PRNU——若 PRNU 高，先做感測器端校正再調 LSC 網格；避免把感測器不均誤當鏡頭陰影硬調。</li>
+</ul>
+</div>
 
 
   <div class="outcome">

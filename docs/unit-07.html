@@ -58,6 +58,18 @@ SNR = 20·log10(S / σ_total)   (dB)</pre></div>
 <li>量測 σ vs gain，決定增益上限。</li>
 <li>調 NR，對比平坦/紋理區。</li>
 </ol>
+<h2>EMVA 1288 對應：雜訊（EMVA 1288 核心）</h2>
+<p><strong>EMVA 1288</strong> 是感測器層的標準量測（QE、飽和、雜訊、動態範圍）。它定義了「感測器送出 RAW 的品質天花板」——以下與本單元對應的規範、公式與調校方向。</p>
+<table>
+<tr><th>EMVA 1288 參數</th><th>公式/定義</th><th>本單元驗證</th></tr>
+<tr><td><strong>時間性暗雜訊</strong></td><td><code>σ_y.dark = √(σ_d²)</code></td><td>黑框量測</td></tr><tr><td><strong>shot noise</strong></td><td><code>σ_y² = σ_y.dark² + η·μ_p</code></td><td>灰框量測</td></tr><tr><td><strong>SNR</strong></td><td><code>SNR = μ_y / σ_y</code></td><td>整體雜訊指標</td></tr>
+</table>
+<div class="callout warn"><strong>數值很差時怎麼調（SNR / 雜訊差）：</strong>
+<ul>
+<li><strong>現象</strong>：EMVA 顯示 read noise 高或 shot 主導但 η 低。</li>
+<li><strong>調校方向</strong>：read noise 高 → 檢查增益設定/感測器操作點；η 低 → 感測器層問題（非 ISP 可救）；可接受則降噪收尾。EMVA 數字決定「NR 的極限」。</li>
+</ul>
+</div>
 
 
   <div class="outcome">

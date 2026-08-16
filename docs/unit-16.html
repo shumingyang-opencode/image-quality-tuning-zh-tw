@@ -60,6 +60,18 @@
 <li>把 16 單元串成你的 SOP。</li>
 <li>建立「量測→調校→驗證→報告」模板。</li>
 </ol>
+<h2>EMVA 1288 對應：工作流中的 EMVA 位置</h2>
+<p><strong>EMVA 1288</strong> 是感測器層的標準量測（QE、飽和、雜訊、動態範圍）。它定義了「感測器送出 RAW 的品質天花板」——以下與本單元對應的規範、公式與調校方向。</p>
+<table>
+<tr><th>EMVA 1288 參數</th><th>公式/定義</th><th>本單元驗證</th></tr>
+<tr><td><strong>先 EMVA 後 ISP</strong></td><td><code>先測感測器（EMVA），再調 ISP</code></td><td>根因導向</td></tr>
+</table>
+<div class="callout warn"><strong>數值很差時怎麼調（「調不上去」）：</strong>
+<ul>
+<li><strong>現象</strong>：tuning 撞牆通常是感測器達不到。</li>
+<li><strong>調校方向</strong>：回 EMVA 1288：確認 η/飽和/雜訊是否符合預期；感測器上限確定後，才知道該補光、換感測器、還是只能接受。</li>
+</ul>
+</div>
 
 
   <div class="outcome">

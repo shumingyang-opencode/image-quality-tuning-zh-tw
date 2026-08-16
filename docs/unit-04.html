@@ -59,6 +59,18 @@
 <li>灰卡下驗證曝光目標誤差。</li>
 <li>背光場景試測光模式。</li>
 </ol>
+<h2>EMVA 1288 對應：曝光與 SNR</h2>
+<p><strong>EMVA 1288</strong> 是感測器層的標準量測（QE、飽和、雜訊、動態範圍）。它定義了「感測器送出 RAW 的品質天花板」——以下與本單元對應的規範、公式與調校方向。</p>
+<table>
+<tr><th>EMVA 1288 參數</th><th>公式/定義</th><th>本單元驗證</th></tr>
+<tr><td><strong>量子效率 η</strong></td><td><code>η = μ_y.dark 以上斜率 / μ_p</code></td><td>曝光目標的訊號基礎</td></tr><tr><td><strong>SNR（shot 主導）</strong></td><td><code>SNR = η·μ_p / √(σ_d² + η·μ_p)</code></td><td>曝光/增益調校的依據</td></tr>
+</table>
+<div class="callout warn"><strong>數值很差時怎麼調（SNR 差（低光））：</strong>
+<ul>
+<li><strong>現象</strong>：EMVA 量測顯示 SNR 遠低於 shot-limited 理論值。</li>
+<li><strong>調校方向</strong>：先加曝光（Texp）→ 再檢視類比增益上限 → 確認感測器是否操作在 shot 主導區（若 read noise 主導，降增益不如補光）。</li>
+</ul>
+</div>
 
 
   <div class="outcome">

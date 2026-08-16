@@ -61,6 +61,18 @@
 <li>列出 ISO 標準族。</li>
 <li>說明 EMVA 1288 的地位。</li>
 </ol>
+<h2>EMVA 1288 對應：EMVA 1288 完整規範</h2>
+<p><strong>EMVA 1288</strong> 是感測器層的標準量測（QE、飽和、雜訊、動態範圍）。它定義了「感測器送出 RAW 的品質天花板」——以下與本單元對應的規範、公式與調校方向。</p>
+<table>
+<tr><th>EMVA 1288 參數</th><th>公式/定義</th><th>本單元驗證</th></tr>
+<tr><td><strong>量測條件</strong></td><td><code>溫度、曝光、光源標準化</code></td><td>可比較性</td></tr><tr><td><strong>參數集</strong></td><td><code>η、飽和、DSNU/PRNU、SNR、DR、暗電流</code></td><td>感測器規格書</td></tr>
+</table>
+<div class="callout warn"><strong>數值很差時怎麼調（規格書與 EMVA 不符）：</strong>
+<ul>
+<li><strong>現象</strong>：廠商 datasheet 的 EMVA 數字與自測不符。</li>
+<li><strong>調校方向</strong>：以同一 EMVA 版本與量測條件重測；確認溫控與光源後再下結論——EMVA 是「講同種語言」的基礎。</li>
+</ul>
+</div>
 
 
   <div class="outcome">

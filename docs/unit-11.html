@@ -53,6 +53,18 @@ DR  = 20·log10(S_sat / σ_noise)       (dB)
 <li>用黑框/灰框量測 SNR。</li>
 <li>色卡算 ΔE。</li>
 </ol>
+<h2>EMVA 1288 對應：完整公式集</h2>
+<p><strong>EMVA 1288</strong> 是感測器層的標準量測（QE、飽和、雜訊、動態範圍）。它定義了「感測器送出 RAW 的品質天花板」——以下與本單元對應的規範、公式與調校方向。</p>
+<table>
+<tr><th>EMVA 1288 參數</th><th>公式/定義</th><th>本單元驗證</th></tr>
+<tr><td><strong>平均訊號</strong></td><td><code>μ_y = μ_y.dark + η·μ_p</code></td><td>訊號模型</td></tr><tr><td><strong>變異</strong></td><td><code>σ_y² = σ_y.dark² + η·μ_p</code></td><td>shot+read</td></tr><tr><td><strong>SNR</strong></td><td><code>SNR = μ_y / σ_y</code></td><td>品質指標</td></tr><tr><td><strong>DR</strong></td><td><code>DR = μ_p.sat / √(μ_p.min)</code></td><td>範圍</td></tr>
+</table>
+<div class="callout warn"><strong>數值很差時怎麼調（整體指標差）：</strong>
+<ul>
+<li><strong>現象</strong>：EMVA 參數互相連動（η/飽和/雜訊）。</li>
+<li><strong>調校方向</strong>：以 EMVA 1288 為「根因工具」：先測感測器，再決定 ISP 調校——感測器達不到的，ISP 補不回來。</li>
+</ul>
+</div>
 
 
   <div class="outcome">

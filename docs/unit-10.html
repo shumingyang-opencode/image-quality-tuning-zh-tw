@@ -61,6 +61,18 @@
 <li>黑框檢查缺陷像素。</li>
 <li>格線圖卡量畸變。</li>
 </ol>
+<h2>EMVA 1288 對應：缺陷像素與壞點</h2>
+<p><strong>EMVA 1288</strong> 是感測器層的標準量測（QE、飽和、雜訊、動態範圍）。它定義了「感測器送出 RAW 的品質天花板」——以下與本單元對應的規範、公式與調校方向。</p>
+<table>
+<tr><th>EMVA 1288 參數</th><th>公式/定義</th><th>本單元驗證</th></tr>
+<tr><td><strong>熱像素</strong></td><td><code>EMVA 量測暗框離群點</code></td><td>DPC 需求</td></tr>
+</table>
+<div class="callout warn"><strong>數值很差時怎麼調（熱像素多）：</strong>
+<ul>
+<li><strong>現象</strong>：EMVA 暗框顯示熱像素比例超標。</li>
+<li><strong>調校方向</strong>：感測器端 DPC 先修；若仍多 → 檢討散熱/曝光時間（暗電流隨溫升）。</li>
+</ul>
+</div>
 
 
   <div class="outcome">

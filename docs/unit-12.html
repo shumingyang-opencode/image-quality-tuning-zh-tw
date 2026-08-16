@@ -52,6 +52,18 @@
 <li>完成一次「灰卡 → 色卡 → SFR」完整量測。</li>
 <li>輸出可再現的量測 log。</li>
 </ol>
+<h2>EMVA 1288 對應：量測方法（EMVA 1288 標準流程）</h2>
+<p><strong>EMVA 1288</strong> 是感測器層的標準量測（QE、飽和、雜訊、動態範圍）。它定義了「感測器送出 RAW 的品質天花板」——以下與本單元對應的規範、公式與調校方向。</p>
+<table>
+<tr><th>EMVA 1288 參數</th><th>公式/定義</th><th>本單元驗證</th></tr>
+<tr><td><strong>暗框</strong></td><td><code>遮光拍多幀 → σ_d, DSNU, dark current</code></td><td>黑位/雜訊</td></tr><tr><td><strong>亮框</strong></td><td><code>均勻照明 → η, shot, PRNU, 飽和</code></td><td>SNR/DR</td></tr>
+</table>
+<div class="callout warn"><strong>數值很差時怎麼調（量測結果離散）：</strong>
+<ul>
+<li><strong>現象</strong>：EMVA 量測的 frame 數不足或光源不穩。</li>
+<li><strong>調校方向</strong>：依 EMVA 1288 要求取足暗/亮框數、校準光源與曝光——量測條件不符，數字不可信。</li>
+</ul>
+</div>
 
 
   <div class="outcome">

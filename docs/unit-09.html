@@ -61,6 +61,18 @@ S_sat = 飽和訊號（滿阱）; σ_noise = 雜訊底</pre></div>
 <li>量測 DR（飽和 vs 雜訊底）。</li>
 <li>拍灰階卡檢查 OECF。</li>
 </ol>
+<h2>EMVA 1288 對應：動態範圍（EMVA 定義）</h2>
+<p><strong>EMVA 1288</strong> 是感測器層的標準量測（QE、飽和、雜訊、動態範圍）。它定義了「感測器送出 RAW 的品質天花板」——以下與本單元對應的規範、公式與調校方向。</p>
+<table>
+<tr><th>EMVA 1288 參數</th><th>公式/定義</th><th>本單元驗證</th></tr>
+<tr><td><strong>動態範圍</strong></td><td><code>DR = 20·log10(μ_p.sat / σ_p.noise)</code></td><td>DR 驗證</td></tr><tr><td><strong>飽和容量</strong></td><td><code>μ_p.sat（飽和光子數）</code></td><td>高光極限</td></tr>
+</table>
+<div class="callout warn"><strong>數值很差時怎麼調（DR 差）：</strong>
+<ul>
+<li><strong>現象</strong>：飽和容量低或雜訊底高。</li>
+<li><strong>調校方向</strong>：飽和低 → 感測器滿阱/增益設定；雜訊底高 → 曝光與增益操作點；兩者都到極限才考慮 HDR 合成。EMVA 的 DR 是「單幀天花板」的權威數字。</li>
+</ul>
+</div>
 
 
   <div class="outcome">
