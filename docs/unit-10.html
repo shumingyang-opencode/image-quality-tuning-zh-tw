@@ -61,6 +61,20 @@
 <li>黑框檢查缺陷像素。</li>
 <li>格線圖卡量畸變。</li>
 </ol>
+<h2>10.6 深入：缺陷像素的量測與規格</h2>
+<div class="demo-block"><div class="demo-label">量測壞點</div><pre>暗框 RAW：與鄰域差異 &gt; 門檻 → hot pixel
+亮框：與鄰域差異 &gt; 門檻 → dead pixel
+統計比例 → 對照 EMVA/規格（&lt; 0.01–0.1%）</pre></div>
+
+<h2>10.7 深入：Moiré 的根源</h2>
+<p>Moiré 源自「感測器取樣頻率 vs 場景頻率」的混疊——不是單一模組可完全解決。光學低通濾波、demosaic 假色抑制、解析度取捨三者要一起看。</p>
+<h2>10.8 Worked Example：壞點判定</h2>
+<div class="demo-block"><div class="demo-label">範例</div><pre>暗框 RAW：
+像素 P = 800（鄰域 ~100）
+差值 700 &gt; 門檻（如 5×σ）→ hot pixel
+全圖統計：18 顆 / 5MP ≈ 0.00036%（&lt;0.01% ✓）
+DPC 啟用後重測 → 壓制 ✓</pre></div>
+<p>動手：統計你的壞點率並確認 DPC 生效。</p>
 <h2>EMVA 1288 對應：缺陷像素與壞點</h2>
 <p><strong>EMVA 1288</strong> 是感測器層的標準量測（QE、飽和、雜訊、動態範圍）。它定義了「感測器送出 RAW 的品質天花板」——以下與本單元對應的規範、公式與調校方向。</p>
 <table>
@@ -74,6 +88,12 @@
 </ul>
 </div>
 
+<h3>本單元 EMVA 門檻與數值差調校</h3>
+<table>
+<tr><th>量測</th><th>門檻</th><th>差時調校</th></tr>
+<tr><td>壞點率</td><td>&lt; 0.01%（佳）</td><td>高 → DPC + 散熱/曝光</td></tr>
+<tr><td>暗電流</td><td>&lt; 50 e⁻/s（一般）</td><td>高 → 降溫/縮曝光</td></tr>
+</table>
 
   <div class="outcome">
     <strong>看完這單元你應該能說出：</strong>

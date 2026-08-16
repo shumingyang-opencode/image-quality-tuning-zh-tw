@@ -61,6 +61,25 @@ S_sat = 飽和訊號（滿阱）; σ_noise = 雜訊底</pre></div>
 <li>量測 DR（飽和 vs 雜訊底）。</li>
 <li>拍灰階卡檢查 OECF。</li>
 </ol>
+<h2>9.7 深入：OECF 的「斷層」檢查</h2>
+<p>階調曲線若出現斷層（bit 不足/tone 曲線過陡），會產生 banding。驗證：灰階卡相鄰階的差值應平滑。</p>
+<div class="demo-block"><div class="demo-label">檢查階調平滑</div><pre>灰階卡相鄰階亮度差 → 應單調且無跳變
+跳變 → tone curve 或位元深問題</pre></div>
+
+<h2>9.8 深入：HDR 的 ghosting 與對策</h2>
+<ul>
+<li>多幀 HDR 合成移動物體 → ghosting。</li>
+<li>對策：偵測運動區域只取單幀、或降低曝光張數。</li>
+<li>靜態場景才用多幀；動態用單幀+tone。</li>
+</ul>
+<h2>9.9 Worked Example：DR 估算</h2>
+<div class="demo-block"><div class="demo-label">範例</div><pre>EMVA：飽和 μ_e.sat = 30k e⁻
+雜訊底 σ_d = 5 e⁻（dark）
+DR = 20·log10(30000/5) ≈ 75.6 dB（佳）
+
+若 σ_d = 20 e⁻ → DR ≈ 63.5 dB（一般）
+調校方向：雜訊底高 → 操作點/增益</pre></div>
+<p>動手：用 EMVA 參數估算你的 DR。</p>
 <h2>EMVA 1288 對應：動態範圍（EMVA 定義）</h2>
 <p><strong>EMVA 1288</strong> 是感測器層的標準量測（QE、飽和、雜訊、動態範圍）。它定義了「感測器送出 RAW 的品質天花板」——以下與本單元對應的規範、公式與調校方向。</p>
 <table>
@@ -74,6 +93,12 @@ S_sat = 飽和訊號（滿阱）; σ_noise = 雜訊底</pre></div>
 </ul>
 </div>
 
+<h3>本單元 EMVA 門檻與數值差調校</h3>
+<table>
+<tr><th>量測</th><th>門檻</th><th>差時調校</th></tr>
+<tr><td>DR</td><td>≥ 60 dB 一般；&gt; 70 dB 佳</td><td>低 → 飽和低檢滿阱；雜訊高檢操作點</td></tr>
+<tr><td>飽和容量</td><td>&gt; 10k e⁻</td><td>低 → 感測器製程/增益</td></tr>
+</table>
 
   <div class="outcome">
     <strong>看完這單元你應該能說出：</strong>

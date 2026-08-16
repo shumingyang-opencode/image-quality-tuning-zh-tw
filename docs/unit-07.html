@@ -58,6 +58,28 @@ SNR = 20·log10(S / σ_total)   (dB)</pre></div>
 <li>量測 σ vs gain，決定增益上限。</li>
 <li>調 NR，對比平坦/紋理區。</li>
 </ol>
+<h2>7.5 深入：NR 的「分頻段」調校</h2>
+<p>雜訊在高頻（細節）與低頻（平坦）表現不同——好的 NR 分頻段：</p>
+<ul>
+<li>低頻：強 NR（平坦區乾淨）。</li>
+<li>高頻：弱 NR（保留紋理）。</li>
+</ul>
+
+<h2>7.6 深入：時間性 vs 空間性雜訊的處理</h2>
+<ul>
+<li>時間性（跨幀抖動）：時間降噪（多幀）。</li>
+<li>空間性（固定圖樣 FPN）：感測器/黑位校正，NR 救不了。</li>
+</ul>
+<div class="callout"><strong>判別：</strong>拍多幀，若固定不變的圖樣 → FPN；隨機抖動 → 時間性。</div>
+<h2>7.7 Worked Example：SNR 與增益</h2>
+<div class="demo-block"><div class="demo-label">範例</div><pre>灰框（18%）：均值 S=400, σ=21
+SNR = 20·log10(400/21) ≈ 25.6 dB（偏低）
+
+檢查：σ_d（暗框）= 8 e⁻；shot 主導 ✓
+調校：曝光×2（S=800, σ≈31）
+SNR = 20·log10(800/31) ≈ 28.2 dB
+再補光：S=1200 → SNR ≈ 30 dB ✓</pre></div>
+<p>動手：量測你的 SNR，用「曝光優先」改善。</p>
 <h2>EMVA 1288 對應：雜訊（EMVA 1288 核心）</h2>
 <p><strong>EMVA 1288</strong> 是感測器層的標準量測（QE、飽和、雜訊、動態範圍）。它定義了「感測器送出 RAW 的品質天花板」——以下與本單元對應的規範、公式與調校方向。</p>
 <table>
@@ -71,6 +93,13 @@ SNR = 20·log10(S / σ_total)   (dB)</pre></div>
 </ul>
 </div>
 
+<h3>本單元 EMVA 門檻與數值差調校</h3>
+<table>
+<tr><th>量測</th><th>門檻</th><th>差時調校</th></tr>
+<tr><td>σ_d</td><td>&lt; 3 e⁻ 佳；&gt; 10 e⁻ 差</td><td>高 → 檢操作點/增益</td></tr>
+<tr><td>SNR（中灰）</td><td>≥ 30 dB</td><td>低 → 先曝光後增益；感測器極限內</td></tr>
+<tr><td>DR</td><td>≥ 60 dB</td><td>低 → 飽和/雜訊底方向</td></tr>
+</table>
 
   <div class="outcome">
     <strong>看完這單元你應該能說出：</strong>

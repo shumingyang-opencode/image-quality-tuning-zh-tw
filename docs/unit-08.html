@@ -59,6 +59,25 @@
 <li>拍 SFR chart，量測 MTF50。</li>
 <li>調 Sharpen，觀察 MTF 與雜訊變化。</li>
 </ol>
+<h2>8.6 深入：MTF 量測的常見誤區</h2>
+<ul>
+<li>斜邊角度過大/過小 → MTF 偏差。</li>
+<li>過曝邊緣 → 飽和 → MTF 高估。</li>
+<li>雜訊 → MTF 低估。</li>
+</ul>
+<div class="callout warn"><strong>量測紀律：</strong>固定曝光（不飽和）、固定斜邊、確認 SNR——否則 MTF 數字不可信。</div>
+
+<h2>8.7 深入：Sharpen 對 MTF 的「假提升」</h2>
+<p>Sharpen 會讓 SFR 在特定頻段「拱起」→ MTF50 上升，但這是邊緣增強，不是真實解析度。驗收要區分「真實 MTF」與「銳化後 MTF」。</p>
+<h2>8.8 Worked Example：MTF50 判定</h2>
+<div class="demo-block"><div class="demo-label">範例</div><pre>SFR chart 量測：
+中心 MTF50 = 0.52 cycles/pixel ✓（≥0.4）
+角落 MTF50 = 0.18
+均勻度 = 0.18/0.52 ≈ 0.35（角落差）
+
+調校：先查角落 SNR（雜訊？）→ 再查鏡頭
+Sharpening 只救邊緣，不救「真實解析度不足」</pre></div>
+<p>動手：量測中心/角落 MTF50，評估均勻度。</p>
 <h2>EMVA 1288 對應：SNR 對 MTF 的可信度</h2>
 <p><strong>EMVA 1288</strong> 是感測器層的標準量測（QE、飽和、雜訊、動態範圍）。它定義了「感測器送出 RAW 的品質天花板」——以下與本單元對應的規範、公式與調校方向。</p>
 <table>
@@ -72,6 +91,12 @@
 </ul>
 </div>
 
+<h3>本單元 EMVA 門檻與數值差調校</h3>
+<table>
+<tr><th>量測</th><th>門檻</th><th>差時調校</th></tr>
+<tr><td>SNR（量測門檻）</td><td>SFR 量測前 SNR ≥ 30 dB</td><td>雜訊高先降噪再量 MTF</td></tr>
+<tr><td>MTF50</td><td>依應用；中心 ≥ 0.4–0.6 c/p</td><td>低 → 確認非雜訊假象</td></tr>
+</table>
 
   <div class="outcome">
     <strong>看完這單元你應該能說出：</strong>

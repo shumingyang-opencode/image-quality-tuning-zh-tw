@@ -82,7 +82,25 @@
 <li>隨機抽 5 個術語，說出維度與對應模組。</li>
 <li>用 <code>glossary.html</code> 查 3 個你不熟的術語。</li>
 </ol>
+<h2>2.8 深入：術語的「單位陷阱」</h2>
+<table>
+<tr><th>術語</th><th>單位陷阱</th></tr>
+<tr><td>SNR</td><td>dB vs 線性比（20·log10 與 10·log10 差異）</td></tr>
+<tr><td>MTF50</td><td>cycles/pixel vs LP/mm vs LW/PH</td></tr>
+<tr><td>增益</td><td>倍數 vs dB vs ISO</td></tr>
+<tr><td>雜訊</td><td>e⁻ vs LSB vs 灰階</td></tr>
+</table>
+<div class="callout warn"><strong>溝通災難：</strong>報數字不帶單位/定義 = 無意義。規格書務必標明「量什麼、怎麼量、單位」。</div>
 
+<h2>2.9 深入：術語與 EMVA 1288 的對應</h2>
+<p>多數「雜訊/動態範圍」術語，在 EMVA 1288 都有精確定義（σ_d、η、μ_p.sat…）。讀懂 EMVA 的定義，才能避免各說各話。</p>
+<h2>2.10 Worked Example：把術語翻譯成量測</h2>
+<div class="demo-block"><div class="demo-label">範例</div><pre>術語      → 定義                    → 量什麼
+SNR       → 訊號/雜訊比             → 灰框 σ + 均值
+動態範圍  → 飽和/雜訊底             → EMVA DR
+LSC       → 四周亮度不均            → 積分球暗角比
+Moiré     → 取樣混疊假影            → 細網格圖卡</pre></div>
+<p>動手：抽 5 個術語，寫出「定義 → 量什麼 → 用哪張圖卡」。</p>
 
   <div class="outcome">
     <strong>看完這單元你應該能說出：</strong>

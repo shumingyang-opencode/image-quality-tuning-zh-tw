@@ -66,7 +66,23 @@
 <li>列出你需要的測試圖卡清單。</li>
 <li>建立你的量測條件 log 範本。</li>
 </ol>
+<h2>3.6 深入：光源穩定性的驗證</h2>
+<div class="demo-block"><div class="demo-label">光源漂移檢查</div><pre>拍多張灰卡，看均值是否穩定：
+同一點跨幀 σ_temporal &lt; 1%（否則光源/曝光不穩）</pre></div>
+<div class="callout warn"><strong>陷阱：</strong>光源閃爍（100/120Hz）會污染雜訊量測——用穩定直流光源或正確同步。</div>
 
+<h2>3.7 深入：圖卡對齊與距離</h2>
+<ul>
+<li>圖卡須垂直於光軸、填滿畫面（依規格）。</li>
+<li>SFR 斜邊角度（ISO 12233 建議 5°）影響 MTF 準度。</li>
+<li>距離/焦距改變解析度——固定記錄。</li>
+</ul>
+<h2>3.8 Worked Example：光源與曝光校準</h2>
+<div class="demo-block"><div class="demo-label">範例</div><pre>1. 光譜儀確認 D65（色溫 ±100K）
+2. 照度計確認 1000 lux（±5%）
+3. 拍灰卡 → 調曝光到 18% 灰（~184 @10bit）
+4. 記錄全部條件到 log</pre></div>
+<p>動手：照此流程校準你的量測環境一次。</p>
 
   <div class="outcome">
     <strong>看完這單元你應該能說出：</strong>

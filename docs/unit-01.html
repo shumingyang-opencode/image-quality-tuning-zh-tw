@@ -66,7 +66,25 @@
 <li>列出 IQ 的六個可量測維度。</li>
 <li>把 ISP 管線每個區塊對應到 IQ 維度。</li>
 </ol>
+<h2>1.5 深入：IQ 驗證的「三個必須」</h2>
+<ul>
+<li><strong>必須可再現</strong>：同樣條件 → 同樣數字（這是 EMVA 1288 的根基）。</li>
+<li><strong>必須可比較</strong>：用業界標準量測，才能跟別家/別批比。</li>
+<li><strong>必須可歸因</strong>：一個數字變化 → 知道是哪個模組/參數造成的。</li>
+</ul>
+<div class="callout warn"><strong>實務陷阱：</strong>「調到好看」但沒留下量測條件 = 白做。沒有 log 的調校，改一行就回不去了。</div>
 
+<h2>1.6 深入：IQ 的取捨哲學</h2>
+<p>調校本質是「取捨」：NR vs 細節、DR vs 雜訊、解析度 vs Moiré。你要懂得<strong>依應用定優先</strong>——拍照與機器視覺的取捨完全不同。</p>
+<h2>1.7 Worked Example：定義你的 IQ 驗收清單</h2>
+<div class="demo-block"><div class="demo-label">範例</div><pre>維度      量測           目標          工具
+曝光      AE 收斂誤差    &lt; 5%         灰卡
+色彩      ΔE00           avg&lt;3       24色卡
+雜訊      SNR(中灰)      ≥ 30 dB      灰框
+解析度    MTF50          ≥ 0.4 c/p    SFR chart
+均勻度    暗角比          ≥ 0.9        積分球
+動態範圍  DR             ≥ 60 dB      EMVA</pre></div>
+<p>動手：為你手上專案建立一份驗收清單——這是你之後每個單元量測的「目的地」。</p>
 
   <div class="outcome">
     <strong>看完這單元你應該能說出：</strong>

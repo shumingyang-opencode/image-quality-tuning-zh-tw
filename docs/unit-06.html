@@ -61,6 +61,22 @@
 <li>量測校正前後暗角比。</li>
 <li>確認四通道各自 ≥0.9。</li>
 </ol>
+<h2>6.7 深入：LSC 的量測與回歸</h2>
+<ol>
+<li>積分球拍均勻灰（多張平均降雜訊）。</li>
+<li>算四通道增益圖 → 平滑 → 寫入網格。</li>
+<li>回測：暗角比 ≥ 0.9、四通道一致。</li>
+</ol>
+<div class="callout warn"><strong>陷阱：</strong>鏡頭光圈/焦距/模組距離變 → shading 曲線變 → 要重做。量產前鎖定鏡頭。</div>
+
+<h2>6.8 深入：PRNU 與 LSC 的分工</h2>
+<p>LSC 補「鏡頭」的陰影；PRNU（感測器空間不均）要感測器端校正。先分離兩者（EMVA 均勻照明量 PRNU），才不會把感測器不均誤當鏡頭硬調。</p>
+<h2>6.9 Worked Example：暗角比量測</h2>
+<div class="demo-block"><div class="demo-label">範例</div><pre>積分球灰卡（中央 = 200）
+四角 = 140 / 138 / 142 / 139
+暗角比 = 140/200 ≈ 0.70（未校正）
+LSC 校正後 → 四角 ≈ 190 → 0.95 ✓</pre></div>
+<p>動手：量測你系統校正前後的四角暗角比。</p>
 <h2>EMVA 1288 對應：空間均勻性（PRNU/DSNU）</h2>
 <p><strong>EMVA 1288</strong> 是感測器層的標準量測（QE、飽和、雜訊、動態範圍）。它定義了「感測器送出 RAW 的品質天花板」——以下與本單元對應的規範、公式與調校方向。</p>
 <table>
@@ -74,6 +90,12 @@
 </ul>
 </div>
 
+<h3>本單元 EMVA 門檻與數值差調校</h3>
+<table>
+<tr><th>量測</th><th>門檻</th><th>差時調校</th></tr>
+<tr><td>PRNU</td><td>&lt; 1%（佳）；&gt; 2% 差</td><td>高 → 感測器端校正再調 LSC</td></tr>
+<tr><td>DSNU</td><td>&lt; 5 e⁻</td><td>高 → 黑位校正/固定圖樣移除</td></tr>
+</table>
 
   <div class="outcome">
     <strong>看完這單元你應該能說出：</strong>

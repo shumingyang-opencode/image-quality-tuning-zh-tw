@@ -61,6 +61,29 @@
 <li>列出 ISO 標準族。</li>
 <li>說明 EMVA 1288 的地位。</li>
 </ol>
+<h2>14.6 深入：ISO vs EMVA 的分工</h2>
+<table>
+<tr><th>標準</th><th>層級</th><th>用途</th></tr>
+<tr><td>EMVA 1288</td><td>感測器</td><td>感測器特性/規格</td></tr>
+<tr><td>ISO 12233…</td><td>相機/鏡頭</td><td>解析度/雜訊/色彩</td></tr>
+<tr><td>CPIQ</td><td>整體畫質</td><td>主觀-客觀對應評分</td></tr>
+</table>
+
+<h2>14.7 深入：EMVA 1288 量測要點</h2>
+<ul>
+<li>恆溫（暗電流敏感）。</li>
+<li>曝光校準（避免飽和/太暗）。</li>
+<li>多幀統計（降噪誤差）。</li>
+</ul>
+<h2>14.8 Worked Example：EMVA 報告閱讀</h2>
+<div class="demo-block"><div class="demo-label">範例</div><pre>某感測器 EMVA 報告：
+η = 52%（可見）✓
+σ_d = 4 e⁻（佳）✓
+μ_e.sat = 28k e⁻（佳）✓
+DR = 74 dB ✓
+PRNU = 1.2% ✓
+→ 感測器層 OK → 可進行 ISP 調校</pre></div>
+<p>動手：讀一份真實 EMVA 報告，判斷各參數等級。</p>
 <h2>EMVA 1288 對應：EMVA 1288 完整規範</h2>
 <p><strong>EMVA 1288</strong> 是感測器層的標準量測（QE、飽和、雜訊、動態範圍）。它定義了「感測器送出 RAW 的品質天花板」——以下與本單元對應的規範、公式與調校方向。</p>
 <table>
@@ -73,6 +96,21 @@
 <li><strong>調校方向</strong>：以同一 EMVA 版本與量測條件重測；確認溫控與光源後再下結論——EMVA 是「講同種語言」的基礎。</li>
 </ul>
 </div>
+
+<h3>EMVA 1288 門檻值速查（典型範圍，依感測器製程與應用）</h3>
+<table>
+<tr><th>參數</th><th>優（佳）</th><th>一般</th><th>差（需檢討）</th><th>影響</th></tr>
+<tr><td>量子效率 η（可見光）</td><td>≥ 60%</td><td>40–60%</td><td>&lt; 30%</td><td>SNR 與感光</td></tr>
+<tr><td>時間性暗雜訊 σ_d</td><td>&lt; 3 e⁻</td><td>3–10 e⁻</td><td>&gt; 10 e⁻</td><td>低光雜訊底</td></tr>
+<tr><td>飽和容量 μ_e.sat</td><td>&gt; 30k e⁻</td><td>10k–30k e⁻</td><td>&lt; 10k e⁻</td><td>動態範圍</td></tr>
+<tr><td>SNR（滿阱、shot 主導）</td><td>&gt; 40 dB</td><td>30–40 dB</td><td>&lt; 30 dB</td><td>整體畫質</td></tr>
+<tr><td>動態範圍 DR</td><td>&gt; 70 dB</td><td>60–70 dB</td><td>&lt; 60 dB</td><td>亮暗共存</td></tr>
+<tr><td>PRNU（空間亮不均）</td><td>&lt; 1%</td><td>1–2%</td><td>&gt; 2%</td><td>LSC 需求</td></tr>
+<tr><td>DSNU（空間暗不均）</td><td>&lt; 5 e⁻</td><td>5–15 e⁻</td><td>&gt; 15 e⁻</td><td>黑位/固定圖樣</td></tr>
+<tr><td>暗電流（室溫）</td><td>&lt; 1 e⁻/s</td><td>1–50 e⁻/s</td><td>&gt; 50 e⁻/s</td><td>長曝光雜訊</td></tr>
+<tr><td>壞點率（hot/dead）</td><td>&lt; 0.01%</td><td>0.01–0.1%</td><td>&gt; 0.1%</td><td>DPC 需求</td></tr>
+</table>
+<div class="callout info"><strong>使用方式：</strong>以上為<strong>典型慣例範圍</strong>，實際門檻應以<strong>你的 SPEC 與應用</strong>為準（如工業/醫療要求更嚴）。EMVA 1288 只定義「怎麼量」，門檻由你定。</div>
 
 
   <div class="outcome">

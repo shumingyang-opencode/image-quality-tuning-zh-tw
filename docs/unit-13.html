@@ -55,6 +55,23 @@
 <li>樣本 3–5 台，量測 AWB gains 分布。</li>
 <li>判斷是否在規格內。</li>
 </ol>
+<h2>13.6 深入：SPC 的基本運用</h2>
+<div class="demo-block"><div class="demo-label">SPC 概念</div><pre>樣本 N 台 → 每台量 AWB gains/SNR/DR
+算 μ、σ → 畫控制圖（μ±3σ）
+超出 → 判定異常 → 追根因</pre></div>
+
+<h2>13.7 深入：一致性的根因</h2>
+<ul>
+<li>感測器批次漂移 → 逐顆校準。</li>
+<li>鏡頭批次差異 → LSC/MTF 抽查。</li>
+<li>組裝/模組差異 → 出廠 AWB/LSC 校正。</li>
+</ul>
+<h2>13.8 Worked Example：unit-to-unit 統計</h2>
+<div class="demo-block"><div class="demo-label">範例</div><pre>5 台 BlueGain: 1.20,1.18,1.21,1.19,1.22
+μ=1.20, σ=0.016
+±3σ = ±4.8%（&lt;10% ✓）
+台差 = (1.22−1.18)/1.20 ≈ 3.3%</pre></div>
+<p>動手：量 3–5 台，算 AWB gains 分布。</p>
 <h2>EMVA 1288 對應：可再現性（Repeatability）</h2>
 <p><strong>EMVA 1288</strong> 是感測器層的標準量測（QE、飽和、雜訊、動態範圍）。它定義了「感測器送出 RAW 的品質天花板」——以下與本單元對應的規範、公式與調校方向。</p>
 <table>
@@ -68,6 +85,12 @@
 </ul>
 </div>
 
+<h3>本單元 EMVA 門檻與數值差調校</h3>
+<table>
+<tr><th>量測</th><th>門檻</th><th>差時調校</th></tr>
+<tr><td>Repeatability</td><td>同條件多次量測漂移 &lt; 5%</td><td>高 → 量測條件/樣本</td></tr>
+<tr><td>unit-to-unit</td><td>μ ± 3σ 在 ±5–10%</td><td>超 → 出廠校正/批次管控</td></tr>
+</table>
 
   <div class="outcome">
     <strong>看完這單元你應該能說出：</strong>

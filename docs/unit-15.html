@@ -61,6 +61,23 @@
 <li>用範本寫一份驗證報告。</li>
 <li>定義一份簡單規格書。</li>
 </ol>
+<h2>15.6 深入：報告的「可重現性」承諾</h2>
+<p>一份合格的 IQ 報告，別人照條件重測應得相近數字。因此：量測條件、工具版本、EMVA 版本、樣本 ID 都要寫清。</p>
+
+<h2>15.7 深入：規格書的「可驗收」寫法</h2>
+<div class="demo-block"><div class="demo-label">SPEC 範例條目</div><pre>項目: 色彩保真度
+量測: 24 色卡, D65, 固定曝光
+目標: ΔE00 avg &lt; 3, max &lt; 6
+方法: CIE DE2000（標明版本）
+判定: 全色塊合格</pre></div>
+<h2>15.8 Worked Example：SPEC 條目撰寫</h2>
+<div class="demo-block"><div class="demo-label">範例</div><pre>項目: 低光雜訊
+量測: 5 lux, 灰卡, 固定曝光
+指標: SNR（EMVA 定義）
+目標: ≥ 20 dB
+方法: 灰框 σ + 均值
+判定: 全測點合格</pre></div>
+<p>動手：為你系統寫 3 條 SPEC。</p>
 <h2>EMVA 1288 對應：報告中的 EMVA 章節</h2>
 <p><strong>EMVA 1288</strong> 是感測器層的標準量測（QE、飽和、雜訊、動態範圍）。它定義了「感測器送出 RAW 的品質天花板」——以下與本單元對應的規範、公式與調校方向。</p>
 <table>
@@ -74,6 +91,13 @@
 </ul>
 </div>
 
+<h3>本單元 EMVA 報告門檻</h3>
+<table>
+<tr><th>項目</th><th>規範</th></tr>
+<tr><td>EMVA 版本</td><td>標明 1.0/2.x，量測條件一致</td></tr>
+<tr><td>參數表</td><td>η/飽和/σ_d/PRNU/DSNU/SNR/DR 全列</td></tr>
+<tr><td>可重現</td><td>附溫控、光源、曝光條件</td></tr>
+</table>
 
   <div class="outcome">
     <strong>看完這單元你應該能說出：</strong>

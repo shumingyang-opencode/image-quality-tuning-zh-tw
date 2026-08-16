@@ -60,6 +60,23 @@
 <li>把 16 單元串成你的 SOP。</li>
 <li>建立「量測→調校→驗證→報告」模板。</li>
 </ol>
+<h2>16.6 深入：調校的「回歸守則」</h2>
+<ul>
+<li>每次改動跑「快照場景」回歸（色彩/雜訊/解析度）。</li>
+<li>用 EMVA 參數當「根因檢查」：調不上去先看感測器。</li>
+<li>參數進 git，附 log 與前後圖。</li>
+</ul>
+
+<h2>16.7 深入：從「會調」到「會驗收」</h2>
+<p>真正的能力不是「把這顆調好看」，而是「建立一套可重現、可比較、可驗收的流程」——把本課的 16 單元串成你的 SOP。</p>
+<h2>16.8 Worked Example：一顆感測器的完整流程</h2>
+<div class="demo-block"><div class="demo-label">流程</div><pre>1. EMVA：η/σ_d/DR（感測器確認）
+2. 黑位校正 → 3. LSC → 4. AWB/CCM
+5. AE 基準 → 6. NR ↔ Sharpen
+7. 驗證：SNR/ΔE/MTF/暗角比 全過
+8. unit-to-unit：5 台抽查
+9. 出報告 + SPEC 對照</pre></div>
+<p>動手：照此 SOP 走完你手上的一顆感測器。</p>
 <h2>EMVA 1288 對應：工作流中的 EMVA 位置</h2>
 <p><strong>EMVA 1288</strong> 是感測器層的標準量測（QE、飽和、雜訊、動態範圍）。它定義了「感測器送出 RAW 的品質天花板」——以下與本單元對應的規範、公式與調校方向。</p>
 <table>
@@ -73,6 +90,9 @@
 </ul>
 </div>
 
+<h3>本單元 EMVA 門檻總結</h3>
+<div class="demo-block"><div class="demo-label">出貨門檻檢查</div><pre>η ≥ 40% · σ_d &lt; 5 e⁻ · DR ≥ 60 dB
+SNR(中灰) ≥ 30 dB · PRNU &lt; 2% · 壞點 &lt; 0.1%</pre></div>
 
   <div class="outcome">
     <strong>看完這單元你應該能說出：</strong>
