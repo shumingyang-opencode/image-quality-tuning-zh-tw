@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>單元 10 · 其他 IQ 模組調校 · Image Quality Tuning 繁中教學站</title>
+<meta name="description" content="缺陷像素、眩光、Moiré、畸變、色差">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>單元 10 · 其他 IQ 模組調校</h1>
+  <p class="subtitle">缺陷像素、眩光、Moiré、畸變、色差</p>
+</header>
+
+<nav class="topnav">  <a href="../index.html">首頁</a>
+  <a href="../map.html">概念地圖</a>
+  <a href="../learning-path.html">學習路線</a>
+  <a href="../docs/index.html">單元教學</a>
+  <a href="../glossary.html">術語表</a>
+  <a href="../formulas.html">驗證公式</a>
+  <a href="../standards.html">標準對照</a>
+  <a href="../about.html">關於</a></nav>
+
+<div class="back-link"><a href="index.html">← 單元教學</a></div>
+
+<div class="guide">
+<h2>10.1 缺陷像素（DPC）</h2>
+<ul>
+<li>Dead pixel：固定黑；Hot pixel：固定亮。</li>
+<li>感測器端 DPC 先修，ISP 端再補。</li>
+<li>驗證：黑框 RAW 的 max 應被壓制。</li>
+</ul>
+
+<h2>10.2 眩光（Flare/Ghost）</h2>
+<ul>
+<li>雜散光造成的霧化或鬼影。</li>
+<li>ISO 18844 量測。</li>
+<li>鏡頭鍍膜/遮光為主，ISP 端能補有限。</li>
+</ul>
+
+<h2>10.3 Moiré</h2>
+<ul>
+<li>細紋理的彩色假影。</li>
+<li>假色抑制（低通）降低但傷 MTF。</li>
+<li>用細網格圖卡判定。</li>
+</ul>
+
+<h2>10.4 幾何畸變與色差</h2>
+<ul>
+<li>畸變：直線變彎 → 鏡頭/校正表。</li>
+<li>色差：邊緣彩邊 → 鏡頭/ISP 校正。</li>
+<li>驗證：格線圖卡量畸變率。</li>
+</ul>
+
+<h2>10.5 練習</h2>
+<ol>
+<li>黑框檢查缺陷像素。</li>
+<li>格線圖卡量畸變。</li>
+</ol>
+
+
+  <div class="outcome">
+    <strong>看完這單元你應該能說出：</strong>
+    <ul><li>缺陷像素與 DPC。</li><li>眩光與 ISO 18844。</li><li>Moiré、畸變、色差的判定。</li></ul>
+  </div>
+
+  <h2>延伸閱讀</h2>
+  <ul>
+    <li>下一篇：<a href="unit-11.html">單元 11 · 通用驗證公式</a>。</li>
+    <li><a href="../learning-path.html">學習路線</a>：複習全站</li>
+  </ul>
+
+  <div class="next-prev">
+    <a href="unit-09.html"><div class="np-label">← 上一篇</div><div class="np-name">單元 9 · 動態範圍與色調映射（HDR/Tone）調校</div></a>
+    <a class="np-next" href="unit-11.html"><div class="np-label">下一篇 →</div><div class="np-name">單元 11 · 通用驗證公式</div></a>
+  </div>
+</div>
+
+<footer>這是 Image Quality Tuning 繁中教學站 · 由 OpenCode 建置<br>
+  <span class="footer-license">本站教學內容（繁體中文解說）為本站原創，採 CC-BY-4.0；術語與標準引用自 <a href="https://www.iso.org/standards.html" rel="noopener">ISO</a>、<a href="https://www.emva.org/standards-technology/emva-1288/" rel="noopener">EMVA 1288</a>與公開影像品質資料。</span></footer>
+
+</div>
+</body>
+</html>

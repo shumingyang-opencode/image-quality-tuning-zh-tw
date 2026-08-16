@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>單元 6 · LSC 鏡頭陰影調校 · Image Quality Tuning 繁中教學站</title>
+<meta name="description" content="成因、網格、驗證公式">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>單元 6 · LSC 鏡頭陰影調校</h1>
+  <p class="subtitle">成因、網格、驗證公式</p>
+</header>
+
+<nav class="topnav">  <a href="../index.html">首頁</a>
+  <a href="../map.html">概念地圖</a>
+  <a href="../learning-path.html">學習路線</a>
+  <a href="../docs/index.html">單元教學</a>
+  <a href="../glossary.html">術語表</a>
+  <a href="../formulas.html">驗證公式</a>
+  <a href="../standards.html">標準對照</a>
+  <a href="../about.html">關於</a></nav>
+
+<div class="back-link"><a href="index.html">← 單元教學</a></div>
+
+<div class="guide">
+<h2>6.1 Lens Shading 成因</h2>
+<p>鏡頭邊緣亮度 ∝ cos⁴(入射角)，加上微透鏡/濾鏡的入射角響應 → 四周變暗、可能偏色。</p>
+
+<h2>6.2 LSC 網格</h2>
+<ul>
+<li>畫面切網格，每節點存 R/Gr/Gb/B 增益。</li>
+<li>節點間插值；分通道（偏色要獨立校正）。</li>
+</ul>
+
+<h2>6.3 驗證公式：暗角比</h2>
+<div class="demo-block"><div class="demo-label">暗角比（shading ratio）</div><pre>暗角比 = 角落亮度 / 中心亮度
+門檻：校正後 > 0.9（原可能 0.7）
+分通道：R/G/B 各算一次（檢查偏色）</pre></div>
+
+<h2>6.4 調校流程</h2>
+<ol>
+<li>積分球拍均勻灰。</li>
+<li>計算四通道增益圖。</li>
+<li>寫入網格 → 再量測驗證。</li>
+</ol>
+
+<h2>6.5 常見問題</h2>
+<ul>
+<li>換鏡頭後又暗 → LSC 是組合特有。</li>
+<li>角落偏色 → R/G/B 網格未獨立。</li>
+<li>網格邊界不連續 → 節點太疏。</li>
+</ul>
+
+<h2>6.6 練習</h2>
+<ol>
+<li>量測校正前後暗角比。</li>
+<li>確認四通道各自 ≥0.9。</li>
+</ol>
+
+
+  <div class="outcome">
+    <strong>看完這單元你應該能說出：</strong>
+    <ul><li>cos⁴ 陰影成因與分通道偏色。</li><li>LSC 網格機制。</li><li>暗角比驗證公式（≥0.9）。</li></ul>
+  </div>
+
+  <h2>延伸閱讀</h2>
+  <ul>
+    <li>下一篇：<a href="unit-07.html">單元 7 · NR 調校</a>。</li>
+    <li><a href="../learning-path.html">學習路線</a>：複習全站</li>
+  </ul>
+
+  <div class="next-prev">
+    <a href="unit-05.html"><div class="np-label">← 上一篇</div><div class="np-name">單元 5 · AWB 與色彩（CCM）調校</div></a>
+    <a class="np-next" href="unit-07.html"><div class="np-label">下一篇 →</div><div class="np-name">單元 7 · 雜訊與降噪（NR）調校</div></a>
+  </div>
+</div>
+
+<footer>這是 Image Quality Tuning 繁中教學站 · 由 OpenCode 建置<br>
+  <span class="footer-license">本站教學內容（繁體中文解說）為本站原創，採 CC-BY-4.0；術語與標準引用自 <a href="https://www.iso.org/standards.html" rel="noopener">ISO</a>、<a href="https://www.emva.org/standards-technology/emva-1288/" rel="noopener">EMVA 1288</a>與公開影像品質資料。</span></footer>
+
+</div>
+</body>
+</html>

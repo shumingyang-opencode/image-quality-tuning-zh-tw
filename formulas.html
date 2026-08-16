@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>驗證公式速查 · Image Quality Tuning 繁中教學站</title>
+<meta name="description" content="通用 IQ 驗證公式、用途與門檻">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<div class="container">
+<header><h1>驗證公式速查</h1><p class="subtitle">通用 IQ 驗證公式、用途與門檻</p></header>
+<nav class="topnav">  <a href="index.html">首頁</a>
+  <a href="map.html">概念地圖</a>
+  <a href="learning-path.html">學習路線</a>
+  <a href="docs/index.html">單元教學</a>
+  <a href="glossary.html">術語表</a>
+  <a href="formulas.html">驗證公式</a>
+  <a href="standards.html">標準對照</a>
+  <a href="about.html">關於</a></nav>
+<div class="back-link"><a href="index.html">← 回首頁</a></div>
+<div class="guide">
+  <div class="callout info"><strong>公式速查</strong></div>
+<h2>雜訊與動態範圍</h2>
+<p></p>
+<table>
+<tr><th>名稱</th><th>英文/公式</th><th>說明</th><th>單元</th></tr>
+<tr><td><strong>SNR</strong></td><td>SNR = 20·log10(S/σ)</td><td>訊噪比（dB）；S 訊號、σ 雜訊</td><td>單元 11</td></tr><tr><td><strong>動態範圍</strong></td><td>DR = 20·log10(S_sat/σ_noise)</td><td>飽和訊號/雜訊底</td><td>單元 11</td></tr><tr><td><strong>時間性雜訊</strong></td><td>σ_t = std(多幀同點)</td><td>隨時間的變異</td><td>單元 11</td></tr></table>
+<h2>色彩</h2>
+<p></p>
+<table>
+<tr><th>名稱</th><th>英文/公式</th><th>說明</th><th>單元</th></tr>
+<tr><td><strong>色彩保真度</strong></td><td>ΔE00（CIE DE2000）</td><td>色差；門檻 avg<3 max<6</td><td>單元 11</td></tr><tr><td><strong>白平衡誤差</strong></td><td>Δu'v' 或 RGB 比值</td><td>中性色偏離程度</td><td>單元 11</td></tr></table>
+<h2>解析度</h2>
+<p></p>
+<table>
+<tr><th>名稱</th><th>英文/公式</th><th>說明</th><th>單元</th></tr>
+<tr><td><strong>MTF 值</strong></td><td>MTF50 / MTF30</td><td>對比降到 50%/30% 的頻率</td><td>單元 11</td></tr><tr><td><strong>SFR</strong></td><td>SFR(f)</td><td>空間頻率響應曲線</td><td>單元 11</td></tr></table>
+<h2>一致性</h2>
+<p></p>
+<table>
+<tr><th>名稱</th><th>英文/公式</th><th>說明</th><th>單元</th></tr>
+<tr><td><strong>單位間差異</strong></td><td>unit-to-unit Δ</td><td>多台間的參數漂移</td><td>單元 13</td></tr><tr><td><strong>暗角比</strong></td><td>corner/center</td><td>四周亮度與中心比</td><td>單元 6</td></tr></table>
+
+</div>
+<footer>這是 Image Quality Tuning 繁中教學站 · 由 OpenCode 建置<br>
+  <span class="footer-license">本站教學內容（繁體中文解說）為本站原創，採 CC-BY-4.0；術語與標準引用自 <a href="https://www.iso.org/standards.html" rel="noopener">ISO</a>、<a href="https://www.emva.org/standards-technology/emva-1288/" rel="noopener">EMVA 1288</a>與公開影像品質資料。</span></footer>
+</div></body></html>

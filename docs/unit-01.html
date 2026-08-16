@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>單元 1 · IQ 概論與 ISP 管線總覽 · Image Quality Tuning 繁中教學站</title>
+<meta name="description" content="什麼是 Image Quality、管線與術語地圖">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>單元 1 · IQ 概論與 ISP 管線總覽</h1>
+  <p class="subtitle">什麼是 Image Quality、管線與術語地圖</p>
+</header>
+
+<nav class="topnav">  <a href="../index.html">首頁</a>
+  <a href="../map.html">概念地圖</a>
+  <a href="../learning-path.html">學習路線</a>
+  <a href="../docs/index.html">單元教學</a>
+  <a href="../glossary.html">術語表</a>
+  <a href="../formulas.html">驗證公式</a>
+  <a href="../standards.html">標準對照</a>
+  <a href="../about.html">關於</a></nav>
+
+<div class="back-link"><a href="index.html">← 單元教學</a></div>
+
+<div class="guide">
+<h2>1.1 什麼是 Image Quality</h2>
+<p><strong>Image Quality（IQ）</strong>不是「感覺好看」，而是<strong>可量測、可再現、符合規範</strong>的客觀屬性集合。</p>
+<table>
+<tr><th>維度</th><th>量測</th><th>主導者</th></tr>
+<tr><td>曝光/亮度</td><td>AE 收斂、直方圖</td><td>AE 演算法</td></tr>
+<tr><td>色彩</td><td>AWB、ΔE、飽和度</td><td>AWB/CCM</td></tr>
+<tr><td>雜訊</td><td>SNR、temporal/spatial</td><td>感測器 + NR</td></tr>
+<tr><td>解析度</td><td>SFR/MTF</td><td>鏡頭 + demosaic</td></tr>
+<tr><td>幾何</td><td>畸變、色差</td><td>鏡頭</td></tr>
+<tr><td>階調</td><td>OECF、動態範圍</td><td>tone mapping</td></tr>
+</table>
+<div class="callout"><strong>核心觀念：</strong>「調校」= 把這些維度逐一逼近目標值。每個維度有<strong>驗證公式</strong>與<strong>業界門檻</strong>。</div>
+
+<h2>1.2 ISP 管線與 IQ 模組的對應</h2>
+<div class="pipe"><span class="step">RAW</span><span class="arr">→</span><span class="step">Black Level</span><span class="arr">→</span><span class="step">LSC</span><span class="arr">→</span><span class="step">Demosaic</span><span class="arr">→</span><span class="step">NR</span><span class="arr">→</span><span class="step">CCM</span><span class="arr">→</span><span class="step">Gamma/Tone</span><span class="arr">→</span><span class="step">輸出</span></div>
+<table>
+<tr><th>管線區塊</th><th>影響的 IQ 維度</th><th>本課單元</th></tr>
+<tr><td>Black Level</td><td>暗部階調</td><td>—</td></tr>
+<tr><td>LSC</td><td>亮度/色彩均勻度</td><td>6</td></tr>
+<tr><td>Demosaic</td><td>解析度、Moiré</td><td>8</td></tr>
+<tr><td>NR</td><td>雜訊</td><td>7</td></tr>
+<tr><td>CCM</td><td>色彩</td><td>5</td></tr>
+<tr><td>Tone</td><td>動態範圍、階調</td><td>9</td></tr>
+</table>
+
+<h2>1.3 IQ 量測的哲學</h2>
+<ul>
+<li><strong>可再現</strong>：同場景、同參數，結果一致。</li>
+<li><strong>可歸因</strong>：一個變化對應一個原因。</li>
+<li><strong>量化</strong>：用公式與數值，不用「感覺」。</li>
+</ul>
+<div class="callout warn"><strong>職業守則：</strong>「看起來不錯」不算驗收——要有數字與報告（單元 15）。</div>
+
+<h2>1.4 練習</h2>
+<ol>
+<li>列出 IQ 的六個可量測維度。</li>
+<li>把 ISP 管線每個區塊對應到 IQ 維度。</li>
+</ol>
+
+
+  <div class="outcome">
+    <strong>看完這單元你應該能說出：</strong>
+    <ul><li>IQ 的六個可量測維度。</li><li>ISP 管線與 IQ 模組的對應。</li><li>量測的三大哲學（可再現/可歸因/量化）。</li></ul>
+  </div>
+
+  <h2>延伸閱讀</h2>
+  <ul>
+    <li>下一篇：<a href="unit-02.html">單元 2 · 專有名詞辭典</a>。</li>
+<li><a href="../glossary.html">術語表</a></li>
+    <li><a href="../learning-path.html">學習路線</a>：複習全站</li>
+  </ul>
+
+  <div class="next-prev">
+    <a href="index.html"><div class="np-label">← 上一層</div><div class="np-name">單元教學目錄</div></a>
+    <a class="np-next" href="unit-02.html"><div class="np-label">下一篇 →</div><div class="np-name">單元 2 · IQ 專有名詞辭典</div></a>
+  </div>
+</div>
+
+<footer>這是 Image Quality Tuning 繁中教學站 · 由 OpenCode 建置<br>
+  <span class="footer-license">本站教學內容（繁體中文解說）為本站原創，採 CC-BY-4.0；術語與標準引用自 <a href="https://www.iso.org/standards.html" rel="noopener">ISO</a>、<a href="https://www.emva.org/standards-technology/emva-1288/" rel="noopener">EMVA 1288</a>與公開影像品質資料。</span></footer>
+
+</div>
+</body>
+</html>

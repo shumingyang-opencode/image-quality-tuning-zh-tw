@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>單元 3 · 測試環境與設備 · Image Quality Tuning 繁中教學站</title>
+<meta name="description" content="光源、圖卡、量測儀器">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>單元 3 · 測試環境與設備</h1>
+  <p class="subtitle">光源、圖卡、量測儀器</p>
+</header>
+
+<nav class="topnav">  <a href="../index.html">首頁</a>
+  <a href="../map.html">概念地圖</a>
+  <a href="../learning-path.html">學習路線</a>
+  <a href="../docs/index.html">單元教學</a>
+  <a href="../glossary.html">術語表</a>
+  <a href="../formulas.html">驗證公式</a>
+  <a href="../standards.html">標準對照</a>
+  <a href="../about.html">關於</a></nav>
+
+<div class="back-link"><a href="index.html">← 單元教學</a></div>
+
+<div class="guide">
+<h2>3.1 光源標準</h2>
+<p>IQ 量測必須在<strong>可控光源</strong>下進行。</p>
+<table>
+<tr><th>光源</th><th>色溫</th><th>用途</th></tr>
+<tr><td>D65</td><td>6500K</td><td>日光標準</td></tr>
+<tr><td>D50</td><td>5000K</td><td>印刷/色彩標準</td></tr>
+<tr><td>A（白熾）</td><td>2856K</td><td>低色溫測試</td></tr>
+<tr><td>TL84</td><td>4000K</td><td>室內螢光</td></tr>
+</table>
+<div class="callout warn"><strong>陷阱：</strong>用非標準光源量測，結果不可再現、不能與別家比較。</div>
+
+<h2>3.2 測試圖卡</h2>
+<table>
+<tr><th>圖卡</th><th>用途</th></tr>
+<tr><td>18% 灰卡</td><td>曝光/白平衡基準</td></tr>
+<tr><td>24 色卡（X-Rite）</td><td>色彩校正/ΔE</td></tr>
+<tr><td>SFR chart（ISO 12233）</td><td>解析度/MTF</td></tr>
+<tr><td>均勻灰（積分球）</td><td>雜訊/LSC</td></tr>
+</table>
+
+<h2>3.3 量測儀器</h2>
+<ul>
+<li><strong>積分球/均勻光源</strong>：均勻照明。</li>
+<li><strong>光譜儀</strong>：光源光譜確認。</li>
+<li><strong>照度計</strong>：lux 確認。</li>
+<li><strong>分析軟體</strong>：Imatest / Python。</li>
+</ul>
+
+<h2>3.4 量測條件記錄</h2>
+<div class="demo-block"><div class="demo-label">量測 log 範本</div><pre>光源: D65  照度: 1000 lux
+圖卡: 24 色卡  距離: 0.5m
+曝光: 自動  增益: 1.0  AWB: off(4500K)</pre></div>
+
+<h2>3.5 練習</h2>
+<ol>
+<li>列出你需要的測試圖卡清單。</li>
+<li>建立你的量測條件 log 範本。</li>
+</ol>
+
+
+  <div class="outcome">
+    <strong>看完這單元你應該能說出：</strong>
+    <ul><li>標準光源（D65/D50/A/TL84）。</li><li>測試圖卡種類與用途。</li><li>量測條件記錄的重要性。</li></ul>
+  </div>
+
+  <h2>延伸閱讀</h2>
+  <ul>
+    <li>下一篇：<a href="unit-04.html">單元 4 · AE 調校</a>。</li>
+<li><a href="../formulas.html">驗證公式速查</a></li>
+    <li><a href="../learning-path.html">學習路線</a>：複習全站</li>
+  </ul>
+
+  <div class="next-prev">
+    <a href="unit-02.html"><div class="np-label">← 上一篇</div><div class="np-name">單元 2 · IQ 專有名詞辭典</div></a>
+    <a class="np-next" href="unit-04.html"><div class="np-label">下一篇 →</div><div class="np-name">單元 4 · AE 曝光與測光調校</div></a>
+  </div>
+</div>
+
+<footer>這是 Image Quality Tuning 繁中教學站 · 由 OpenCode 建置<br>
+  <span class="footer-license">本站教學內容（繁體中文解說）為本站原創，採 CC-BY-4.0；術語與標準引用自 <a href="https://www.iso.org/standards.html" rel="noopener">ISO</a>、<a href="https://www.emva.org/standards-technology/emva-1288/" rel="noopener">EMVA 1288</a>與公開影像品質資料。</span></footer>
+
+</div>
+</body>
+</html>

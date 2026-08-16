@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>單元 11 · 通用驗證公式 · Image Quality Tuning 繁中教學站</title>
+<meta name="description" content="SNR、DR、雜訊、MTF、ΔE 的公式與門檻">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>單元 11 · 通用驗證公式</h1>
+  <p class="subtitle">SNR、DR、雜訊、MTF、ΔE 的公式與門檻</p>
+</header>
+
+<nav class="topnav">  <a href="../index.html">首頁</a>
+  <a href="../map.html">概念地圖</a>
+  <a href="../learning-path.html">學習路線</a>
+  <a href="../docs/index.html">單元教學</a>
+  <a href="../glossary.html">術語表</a>
+  <a href="../formulas.html">驗證公式</a>
+  <a href="../standards.html">標準對照</a>
+  <a href="../about.html">關於</a></nav>
+
+<div class="back-link"><a href="index.html">← 單元教學</a></div>
+
+<div class="guide">
+<h2>11.1 雜訊與動態範圍</h2>
+<div class="demo-block"><div class="demo-label">核心公式</div><pre>SNR = 20·log10(S / σ)                 (dB)
+DR  = 20·log10(S_sat / σ_noise)       (dB)
+σ_temporal = std(多幀同點)</pre></div>
+
+<h2>11.2 色彩</h2>
+<div class="demo-block"><div class="demo-label">ΔE00（CIE DE2000）</div><pre>ΔE00 = f(ΔL, ΔC, ΔH, 加權項)
+門檻：平均 < 3，單色 < 6</pre></div>
+
+<h2>11.3 解析度</h2>
+<div class="demo-block"><div class="demo-label">MTF50</div><pre>MTF50 = SFR(f) 降至 50% 時的頻率
+門檻依應用：手機 ≥ 0.4–0.6</pre></div>
+
+<h2>11.4 一致性</h2>
+<div class="demo-block"><div class="demo-label">unit-to-unit</div><pre>Δparam = |單位值 − 群組平均| / 群組平均
+門檻：多數 < 5–10%</pre></div>
+
+<h2>11.5 完整公式速查</h2>
+<p>所有公式集中於<a href="../formulas.html">公式速查頁</a>。</p>
+
+<h2>11.6 練習</h2>
+<ol>
+<li>用黑框/灰框量測 SNR。</li>
+<li>色卡算 ΔE。</li>
+</ol>
+
+
+  <div class="outcome">
+    <strong>看完這單元你應該能說出：</strong>
+    <ul><li>SNR/DR/ΔE/MTF50 公式。</li><li>門檻值。</li><li>如何用公式速查。</li></ul>
+  </div>
+
+  <h2>延伸閱讀</h2>
+  <ul>
+    <li>下一篇：<a href="unit-12.html">單元 12 · 量測流程與圖卡</a>。</li>
+<li><a href="../formulas.html">公式速查</a></li>
+    <li><a href="../learning-path.html">學習路線</a>：複習全站</li>
+  </ul>
+
+  <div class="next-prev">
+    <a href="unit-10.html"><div class="np-label">← 上一篇</div><div class="np-name">單元 10 · 其他 IQ 模組調校</div></a>
+    <a class="np-next" href="unit-12.html"><div class="np-label">下一篇 →</div><div class="np-name">單元 12 · 量測流程與圖卡實作</div></a>
+  </div>
+</div>
+
+<footer>這是 Image Quality Tuning 繁中教學站 · 由 OpenCode 建置<br>
+  <span class="footer-license">本站教學內容（繁體中文解說）為本站原創，採 CC-BY-4.0；術語與標準引用自 <a href="https://www.iso.org/standards.html" rel="noopener">ISO</a>、<a href="https://www.emva.org/standards-technology/emva-1288/" rel="noopener">EMVA 1288</a>與公開影像品質資料。</span></footer>
+
+</div>
+</body>
+</html>
