@@ -108,7 +108,48 @@ LSC 校正後 → 四角 ≈ 190 → 0.95 ✓</pre></div>
     <ul><li>cos⁴ 陰影成因與分通道偏色。</li><li>LSC 網格機制。</li><li>暗角比驗證公式（≥0.9）。</li></ul>
   </div>
 
-  <h2>延伸閱讀</h2>
+  
+<div class="round1-deepen">
+<h2>進階真實情境 Worked Example：雙鏡頭 LSC 差異校正</h2>
+<div class="demo-block"><div class="demo-label">進階範例：雙鏡頭手機的 LSC 一致性</div><pre>場景：手機主攝 + 超廣角，LSC 必須各自校正且切換時無色差。
+
+工作流：
+1. 主攝：積分球 → 暗角比 0.72 → LSC 網格 A
+2. 超廣角：積分球 → 暗角比 0.55（畸變更大）→ LSC 網格 B
+3. 交叉驗證：同場景切換 → 中心亮度差 &lt; 3%
+4. 色溫驗證：D65 + A 光源各做一次
+5. 綁定鏡頭模組 ID → 量產時逐顆套用
+
+為什麼這條路徑：
+不同鏡頭的 shading 曲線差異大 →
+共用一張 LSC 網格會造成切換色差。</pre></div>
+<p>動手：為雙鏡頭系統建立各自的 LSC 並驗證切換一致性。</p>
+<p><em>為什麼選這條調校路徑：</em>不同鏡頭的 shading 曲線差異很大，共用同一張 LSC 網格會在切換鏡頭時產生色差與亮度跳變，必須各自校正並綁定模組。</p>
+
+<h2>進階原理：cos⁴ 以外的 shading 成因</h2>
+<p>LSC 不只補 cos⁴（入射角亮度衰減），還有微透鏡陣列的入射角響應（micro lens shading）、IR 濾鏡的入射角位移、以及感測器井深不均。這些因素疊加後，實際 shading 曲線往往比純 cos⁴ 複雜。</p>
+<div class="callout warn"><strong>陷阱案例：</strong>「用 cos⁴ 模型預測 shading → 實際偏差 15%」——因為微透鏡與 IR 濾鏡的角響應不是 cos⁴ 可以描述的。正確做法：直接量測，不依賴理論模型。</div>
+
+<h2>診斷式疑難排解</h2>
+
+<table>
+<tr><th>症狀</th><th>可能原因</th><th>解決方案</th></tr>
+<tr><td>暗角比校正後仍低</td><td>LSC 網格節點過疏</td><td>增加網格密度重新校正</td></tr>
+<tr><td>角落偏色未改善</td><td>R/G/B 通道未獨立校正</td><td>改為四通道獨立 LSC 網格</td></tr>
+<tr><td>換鏡頭後暗角又出現</td><td>LSC 是鏡頭特定的</td><td>為新鏡頭重建 LSC 網格</td></tr>
+<tr><td>LSC 校正後中心過亮</td><td>中心增益計算錯誤</td><td>重新量測中心基準值</td></tr>
+<tr><td>校正後角落雜訊放大</td><td>LSC 增益過大</td><td>降低 LSC 強度或加 NR 補償</td></tr>
+</table>
+
+<h2>進階挑戰題</h2>
+<ol>
+<li>為雙鏡頭系統設計 LSC 一致性驗證：同場景切換鏡頭時，中心亮度差、色溫差、暗角比差各應在什麼範圍內？</li>
+<li>比較「固定 LSC 網格」vs「動態 LSC（依 zoom level 切換）」的優缺點，並設計切換策略。</li>
+<li>量測你的 LSC 校正後的角落 SNR 損失——LSC 增益放大了多少角落雜訊？如何在 LSC 與 NR 之間取得平衡？</li>
+</ol>
+</div>
+
+<h2>延伸閱讀</h2>
   <ul>
     <li>下一篇：<a href="unit-07.html">單元 7 · NR 調校</a>。</li>
     <li><a href="../learning-path.html">學習路線</a>：複習全站</li>

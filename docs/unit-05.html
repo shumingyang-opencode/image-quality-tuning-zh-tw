@@ -113,7 +113,55 @@ B gain = 190/170 ≈ 1.12
     <ul><li>AWB gains 的色溫趨勢。</li><li>灰卡校正流程。</li><li>ΔE00 門檻與分色溫 CCM。</li></ul>
   </div>
 
-  <h2>延伸閱讀</h2>
+  
+<div class="round1-deepen">
+<h2>進階真實情境 Worked Example：混合光源 AWB + GMCC + CCM</h2>
+<div class="demo-block"><div class="demo-label">進階範例：賣場混合光源色彩校正</div><pre>場景：賣場同時有 LED（6500K）+ 白熾（3000K），AWB 失效。
+
+工作流：
+1. AWB 灰點檢測 → 混合光源無明確灰點
+2. GMCC（Gray World + Color Constraints）：
+   強制場景平均色彩趨向灰色 + 色彩範圍約束
+3. 拍攝場景 → 手動選取 ROI 校正 AWB gains
+4. 用場景專屬 CCM（非 D65 標準 CCM）
+5. 驗證：場景中白紙 ΔE &lt; 4（放寬因混合光源）
+
+為什麼選這條路徑：
+標準 AWB 假設「單一光源」→ 混合光源需要
+場景感知的 AWB + 專屬 CCM 才能兼顧自然感。</pre></div>
+<p>動手：在混合光源場景測試 GMCC 與標準 AWB 的差異。</p>
+<p><em>為什麼選這條調校路徑：</em>標準 AWB 假設單一光源，混合光源場景需要場景感知的 GMCC 演算法配合專屬 CCM，才能在色準與自然感之間取得平衡。</p>
+
+<h2>進階原理：AWB 靈敏度矩陣與 metamerism</h2>
+<p>AWB 的核心是「靈敏度矩陣」——描述「色溫變化 ΔT 時，R/B gain 需要變化多少」。然而 metamerism（同色異譜）是 AWB 的天敵：兩種光譜完全不同的光源可能產生相同的色溫讀數，但 AWB 給出相同的 gains 時色彩結果不同。</p>
+<div class="demo-block"><div class="demo-label">Metamerism 陷阱</div><pre>光源 A：D65（色溫 6500K）
+光源 B：LED 6500K（SPD 不同）
+AWB 給出相同 gains → 但 CCM 輸出色彩不同！
+
+原因：CCM 是針對特定 SPD 訓練的 →
+換光源 SPD 時 CCM 不適用。</pre></div>
+<div class="callout warn"><strong>陷阱案例：</strong>「同一色溫下 AWB 正確就以為沒問題」——不同光源的 SPD 不同時，AWB 可能給出相同 gains 但色彩結果完全不同。</div>
+
+<h2>診斷式疑難排解</h2>
+
+<table>
+<tr><th>症狀</th><th>可能原因</th><th>解決方案</th></tr>
+<tr><td>灰卡偏綠</td><td>AWB RedGain 過低或 GreenBias</td><td>重做灰卡校正 + 檢查 Green Bias</td></tr>
+<tr><td>低色溫偏紅但高色溫正常</td><td>低色溫 CCM 未校正或 AWB 表缺失</td><td>補充低色溫 CCM + 檢查 AWB 查找表</td></tr>
+<tr><td>ΔE 平均 OK 但單色極差</td><td>CCM 對該色塊映射偏差</td><td>用加權 ΔE 調整 CCM（加重偏差色）</td></tr>
+<tr><td>混合光源色彩不自然</td><td>AWB 假設單一光源</td><td>啟用場景感知 AWB 或 GMCC</td></tr>
+<tr><td>CCM 後飽和度異常</td><td>CCM 對角線過大</td><td>降低 CCM 對角線 + 用色域約束</td></tr>
+</table>
+
+<h2>進階挑戰題</h2>
+<ol>
+<li>在混合光源場景下測試：標準 AWB vs GMCC vs 手動校正，比較三者的 ΔE 與主觀評估。說明各方法的優缺點。</li>
+<li>為你的感測器建立「AWB 靈敏度矩陣」：量測 3000K→7000K 每 500K 的 R/B gain，畫出靈敏度曲線，標出非線性區域。</li>
+<li>設計一個「metamerism 檢測」流程：用至少三種不同 SPD 的光源（D65、LED、白熾）拍攝同一色卡，比較 CCM 輸出差異。</li>
+</ol>
+</div>
+
+<h2>延伸閱讀</h2>
   <ul>
     <li>下一篇：<a href="unit-06.html">單元 6 · LSC 調校</a>。</li>
     <li><a href="../learning-path.html">學習路線</a>：複習全站</li>

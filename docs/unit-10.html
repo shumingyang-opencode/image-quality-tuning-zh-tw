@@ -106,7 +106,51 @@ DPC 啟用後重測 → 壓制 ✓</pre></div>
     <ul><li>缺陷像素與 DPC。</li><li>眩光與 ISO 18844。</li><li>Moiré、畸變、色差的判定。</li></ul>
   </div>
 
-  <h2>延伸閱讀</h2>
+  
+<div class="round1-deepen">
+<h2>進階真實情境 Worked Example：DPC + Flare + Moiré 綜合診斷</h2>
+<div class="demo-block"><div class="demo-label">進階範例：工業視覺系統綜合 IQ 診斷</div><pre>場景：工廠生產線，影像出現「邊緣彩邊 + 紋理假影 + 亮點」。
+
+診斷流程：
+1. 黑框 → hot pixel 22 顆（DPC 需開啟）
+2. 逆光 → 邊緣霧化（Flare，ISO 18844 量測）
+3. 細網格 → 彩色 Moiré（假色抑制不足）
+4. 逐項處理：
+   - DPC 開啟 → 亮點消失
+   - 加遮光罩 → Flare 降低 40%
+   - 調 demosaic 假色抑制 → Moiré 消失
+5. 最終驗證：三項異常全消除
+
+為什麼這條路徑：
+多個 IQ 問題同時出現 → 必須隔離測試 →
+逐項確認根因，避免「改一個壞另一個」。</pre></div>
+<p>動手：在你的系統做一次多模組綜合診斷。</p>
+<p><em>為什麼選這條調校路徑：</em>多個 IQ 問題同時出現時，必須用隔離測試逐項確認根因——黑框查 DPC、逆光查 Flare、細網格查 Moiré，避免改一個壞另一個。</p>
+
+<h2>進階原理：Flare 的光學建模</h2>
+<p>Flare（眩光）分為 veiling glare（均勻霧化）和 ghost（鬼影）。Veiling glare 可用 PSF（點擴散函數）建模，ghost 可用鏡片表面反射幾何追蹤。Flare 的嚴重程度與鏡頭鍍膜品質、遮光設計、光源入射角度直接相關。</p>
+<div class="callout warn"><strong>陷阱案例：</strong>「ISP 端加 dehaze 演算法 → Flare 消失」——但 dehaze 只處理 veiling glare，不處理 ghost。真正的解決方案是鏡頭端的遮光與鍍膜。</div>
+
+<h2>診斷式疑難排解</h2>
+
+<table>
+<tr><th>症狀</th><th>可能原因</th><th>解決方案</th></tr>
+<tr><td>黑框有亮點</td><td>Hot pixel（熱像素）</td><td>開啟 DPC + 降低暗電流（降溫/縮曝光）</td></tr>
+<tr><td>逆光場景邊緣霧化</td><td>Flare（眩光）</td><td>加遮光罩 + 檢查鏡頭鍍膜</td></tr>
+<tr><td>細紋理出現彩色假影</td><td>Moiré（混疊）</td><td>開啟假色抑制 + 接受 MTF 略降</td></tr>
+<tr><td>直線變彎</td><td>幾何畸變（鏡頭）</td><td>套用畸變校正表或換鏡頭</td></tr>
+<tr><td>邊緣彩邊</td><td>色差（鏡頭軸向/横向）</td><td>鏡頭端校正 + ISP 色差補償</td></tr>
+</table>
+
+<h2>進階挑戰題</h2>
+<ol>
+<li>建立一個「IQ 問題診斷決策樹」：從「影像異常」出發，逐步隔離是 DPC/Flare/Moiré/畸變/色差中的哪一個，並標出每個分支的量測方法。</li>
+<li>在同一鏡頭上，分别量測 DPC 開/關、假色抑制開/關、畸變校正開/關的 MTF 變化，說明每個模組對解析度的影響。</li>
+<li>設計一個「多模組副作用檢查」流程：每開啟一個 ISP 模組後，除了檢查它改善的指標外，還需檢查哪些可能的副作用？</li>
+</ol>
+</div>
+
+<h2>延伸閱讀</h2>
   <ul>
     <li>下一篇：<a href="unit-11.html">單元 11 · 通用驗證公式</a>。</li>
     <li><a href="../learning-path.html">學習路線</a>：複習全站</li>

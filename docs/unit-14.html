@@ -124,7 +124,55 @@ PRNU = 1.2% ✓
     <ul><li>ISO 標準族與各自量測。</li><li>EMVA 1288 的地位。</li><li>CPIQ/DXOMark。</li></ul>
   </div>
 
-  <h2>延伸閱讀</h2>
+  
+<div class="round1-deepen">
+<h2>進階真實情境 Worked Example：ISO + EMVA 雙層報告撰寫</h2>
+<div class="demo-block"><div class="demo-label">進階範例：客戶要求的雙層 IQ 報告</div><pre>場景：客戶要求同時提交 EMVA 1288（感測器層）+ ISO（相機層）報告。
+
+報告結構：
+Part A — EMVA 1288（感測器層）：
+  η=52%, σ_d=4e⁻, μ_e.sat=28k, DR=74dB
+  條件：25°C, D65, 10bit RAW
+
+Part B — ISO（相機層）：
+  ISO 12233: MTF50=0.52 c/p
+  ISO 15739: SNR=32 dB
+  ISO 14524: OECF 平滑 ✓
+
+Part C — 交叉分析：
+  感測器 DR=74dB → 相機輸出 DR=62dB（tone mapping 壓縮）
+  → 結論：tone mapping 設定合理
+
+為什麼這條路徑：
+感測器層（EMVA）+ 相機層（ISO）分開報告 →
+才能區分「感測器上限」與「ISP 處理結果」。</pre></div>
+<p>動手：為你的系統寫一份 EMVA + ISO 雙層報告。</p>
+<p><em>為什麼選這條調校路徑：</em>感測器層（EMVA）和相機層（ISO）分開報告，才能清楚區分「感測器的物理上限」與「ISP 處理後的實際結果」。</p>
+
+<h2>進階原理：EMVA 1288 的溫度依賴性</h2>
+<p>暗電流（dark current）與溫度呈指數關係：每升高 8°C 約翻倍。因此 EMVA 量測必須在恆溫下進行。不同溫度的量測結果不可直接比較。</p>
+<div class="callout warn"><strong>陷阱案例：「冬天量 DR=75dB，夏天量 DR=70dB → 誤判感測器退化」——其實只是溫度差異，不是感測器問題。必須控制溫度再比較。</div>
+
+<h2>診斷式疑難排解</h2>
+
+<table>
+<tr><th>症狀</th><th>可能原因</th><th>解決方案</th></tr>
+<tr><td>EMVA 數字與廠商 datasheet 不符</td><td>量測條件不同（溫度/曝光）</td><td>用同一條件重測 + 附條件記錄</td></tr>
+<tr><td>ISO 12233 SFR 與 ISO 15739 雜訊矛盾</td><td>兩標準量測層級不同</td><td>分開報告 + 標明是感測器層或相機層</td></tr>
+<tr><td>CPIQ 評分與客觀指標不對應</td><td>CPIQ 是主客觀對應框架</td><td>補充主觀評估數據</td></tr>
+<tr><td>報告引用標準但未附版本</td><td>標準版本不同導致公式差異</td><td>每次報告標明 ISO/EMVA 版本</td></tr>
+<tr><td>不同實驗室的 EMVA 結果無法比較</td><td>量測設備/條件差異</td><td>統一設備校準 + 附不確定度</td></tr>
+</table>
+
+<h2>進階挑戰題</h2>
+<ol>
+<li>為你的專案建立「標準對照矩陣」：每個 IQ 指標對應的方法標準（ISO/EMVA）、測試條件、報告格式、門檻值。</li>
+<li>比較 EMVA 1288 v1.0 與 v2.0 的差異，說明在什麼情況下應該升級版本，升級時需要注意什麼。</li>
+<li>設計一個「標準合規性審計」流程：如何確認一份 IQ 報告是否真正符合 ISO 12233/15739/14524 的要求。</li>
+</ol>
+</div>
+
+<h2>延伸閱讀</h2>
   <ul>
     <li>下一篇：<a href="unit-15.html">單元 15 · 一致性報告</a>。</li>
 <li><a href="../standards.html">標準對照</a></li>

@@ -113,7 +113,56 @@ Moiré     → 取樣混疊假影            → 細網格圖卡</pre></div>
     <ul><li>術語分六類（曝光/色彩/雜訊/解析度/幾何/鏡頭）。</li><li>每個術語的定義與對應模組。</li><li>如何用術語表速查。</li></ul>
   </div>
 
-  <h2>延伸閱讀</h2>
+  
+<div class="round1-deepen">
+<h2>進階真實情境 Worked Example：跨標準術語翻譯實戰</h2>
+<div class="demo-block"><div class="demo-label">進階範例：客戶規格書術語翻譯</div><pre>客戶需求原文：
+  "Low-light SNR &gt; 30dB, resolution &gt; 2000 LW/PH"
+
+翻譯步驟：
+1. SNR 30dB → 定義：灰框均值/σ（dB），光源 D65, 10lux
+2. 2000 LW/PH → 轉換為 cycles/pixel：
+   LW/PH ÷ (2 × pixels_per_line)
+   假設 1920pixels → 2000/(2×1920) ≈ 0.52 c/p
+3. 方法標準：SNR → ISO 15739；LW/PH → ISO 12233
+4. 補充：標明色溫、曝光、ROI、單位
+
+為什麼這條路徑：
+客戶說的是「結果語言」，工程需要「量測語言」→
+翻譯是避免規格歧義的第一步。</pre></div>
+<p>動手：找一條含糊的規格需求，做一次完整的術語翻譯。</p>
+<p><em>為什麼選這條調校路徑：</em>規格書上的「結果語言」必須翻譯成有明確定義、單位、量測方法的「工程語言」，才能避免驗收時各說各話。</p>
+
+<h2>進階原理：感測器光譜響應與色域映射</h2>
+<p>感測器的 R/G/B 通道有各自的光譜響應曲線 S_R(λ), S_G(λ), S_B(λ)。CCM 本質上是把「感測器色域」映射到「目標色域」（如 sRGB）的線性變換。數學上：</p>
+<div class="demo-block"><div class="demo-label">CCM 映射</div><pre>[R_out]       [R_sensor]
+[G_out] = CCM × [G_sensor]
+[B_out]       [B_sensor]
+
+CCM 是 3×3 矩陣，由最小二乘法求解：
+min Σ ||target_color − CCM × sensor_color||²</pre></div>
+<div class="callout warn"><strong>陷阱案例：</strong>「CCM 對角線越大越飽和」——但若感測器色域與目標色域重疊小，強行拉大對角線會造成色域外裁切（gamut clipping），某些飽和色反而失真。</div>
+
+<h2>診斷式疑難排解</h2>
+
+<table>
+<tr><th>症狀</th><th>可能原因</th><th>解決方案</th></tr>
+<tr><td>規格書寫「SNR 好」但無法驗證</td><td>未定義 SNR 的量測方法與單位</td><td>補充：定義 ROI、光源、公式、單位</td></tr>
+<tr><td>兩邊報告數字差 3dB</td><td>SNR 用 10·log10 vs 20·log10</td><td>統一用 20·log10（振幅比）</td></tr>
+<tr><td>MTF50 單位不一致無法比較</td><td>c/p vs LW/PH vs LP/mm 混用</td><td>統一單位並記錄轉換公式</td></tr>
+<tr><td>ΔE 報告差異大</td><td>色彩空間/白點不同</td><td>統一 sRGB + D65 白點</td></tr>
+<tr><td>術語表與實際量測不對應</td><td>術語定義與實際操作脫節</td><td>更新術語表綁定量測 SOP</td></tr>
+</table>
+
+<h2>進階挑戰題</h2>
+<ol>
+<li>將以下含糊需求改寫為完整 SPEC：「低光畫質好」「色彩準」「解析度高」——每條包含方法、單位、光源、門檻、判定標準。</li>
+<li>設計一個「術語速查卡」：把本單元所有術語按維度分類，每個術語附「定義 + 量測方法 + 單位 + 常見誤用」。</li>
+<li>找出三個不同廠商的感測器 datasheet，比較它們的 EMVA 數字呈現方式，說明哪些是「同數字不同定義」的陷阱。</li>
+</ol>
+</div>
+
+<h2>延伸閱讀</h2>
   <ul>
     <li>下一篇：<a href="unit-03.html">單元 3 · 測試環境與設備</a>。</li>
 <li><a href="../glossary.html">術語表</a></li>

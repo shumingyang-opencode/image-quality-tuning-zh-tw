@@ -112,7 +112,48 @@ SNR = 20·log10(800/31) ≈ 28.2 dB
     <ul><li>shot/read/dark noise 物理。</li><li>σ 與 SNR 量測。</li><li>NR 與細節的取捨。</li></ul>
   </div>
 
-  <h2>延伸閱讀</h2>
+  
+<div class="round1-deepen">
+<h2>進階真實情境 Worked Example：低光 NR + Sharpen 聯合調校</h2>
+<div class="demo-block"><div class="demo-label">進階範例：夜間監視 NR + Sharpen 取捨</div><pre>場景：5 lux 夜間監視，SNR 要求 ≥ 20dB，車牌需可辨識。
+
+調校流程：
+1. RAW SNR = 15 dB（不足）→ NR 開啟
+2. Temporal NR（2 幀平均）→ SNR +6dB = 21dB ✓
+3. Spatial NR 強度 3/10（保留紋理）
+4. Sharpen 強度 4/10（拉回 MTF，避免 halo）
+5. 驗證：SNR=21dB, MTF50=0.42, 紋理保留 ✓
+
+為什麼選這條路徑：
+時間降噪不傷 MTF → 優先使用 →
+空間降噪只補足不足的部分 → Sharpen 最後拉回。</pre></div>
+<p>動手：在低光場景用「時間優先」策略調 NR。</p>
+<p><em>為什麼選這條調校路徑：</em>時間降噪不損傷空間解析度，應優先使用；空間降噪只補足時間降噪的不足，Sharpen 最後才拉回 MTF——這是低光 NR 的黃金順序。</p>
+
+<h2>進階原理：雜訊功率譜密度與頻域 NR</h2>
+<p>雜訊在頻域有功率譜密度（PSD）。白雜訊的 PSD 是平坦的；1/f 雜訊在低頻更強。頻域 NR 可以針對不同頻段施加不同強度的降噪，比純空間域 NR 更精準。</p>
+<div class="callout warn"><strong>陷阱案例：</strong>「空間域 NR 調到最好看 → 頻域檢查發現低頻雜訊完全沒處理」——因為空間域 NR 的 kernel 大小有限，對低頻（大範圍亮度波動）無效。必須結合頻域 NR。</div>
+
+<h2>診斷式疑難排解</h2>
+
+<table>
+<tr><th>症狀</th><th>可能原因</th><th>解決方案</th></tr>
+<tr><td>NR 後平坦區乾淨但紋理消失</td><td>NR 強度過高</td><td>降低 NR 或改用分頻段 NR</td></tr>
+<tr><td>彩色雜訊未消除</td><td>色度 NR 未啟用或太弱</td><td>加強色度 NR（可比亮度 NR 強）</td></tr>
+<tr><td>固定圖樣雜訊（FPN）NR 無法消除</td><td>FPN 是空間固定雜訊</td><td>用黑位校正或 DPC 處理，NR 無效</td></tr>
+<tr><td>NR 後 SNR 變好但 MTF 暴跌</td><td>NR 過強傷害高頻</td><td>降低 NR 強度 + 加 Sharpen 補回</td></tr>
+<tr><td>高 ISO 雜訊呈彩色斑塊</td><td>色度雜訊主導</td><td>加強色度 NR + 降低色度 NR 門檻</td></tr>
+</table>
+
+<h2>進階挑戰題</h2>
+<ol>
+<li>在三個照度（100 lux / 10 lux / 1 lux）下，分別量測 RAW SNR 與 NR 後 SNR，繪出 SNR 曲線，標出「read noise 主導」vs「shot noise 主導」的轉折點。</li>
+<li>設計一個「NR 強度自動調整」機制：根據當前 ISO/增益自動選擇 NR 強度，並驗證在不同 ISO 下的 SNR/MTF 平衡。</li>
+<li>比較 Temporal NR（2 幀/3 幀/4 幀）的效果：SNR 提升多少？延遲增加多少？場景運動時 ghosting 如何？</li>
+</ol>
+</div>
+
+<h2>延伸閱讀</h2>
   <ul>
     <li>下一篇：<a href="unit-08.html">單元 8 · 解析度與清晰度</a>。</li>
 <li><a href="../formulas.html">驗證公式速查</a></li>
