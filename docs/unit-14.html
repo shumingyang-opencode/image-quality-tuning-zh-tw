@@ -113,6 +113,12 @@ PRNU = 1.2% ✓
 <div class="callout info"><strong>使用方式：</strong>以上為<strong>典型慣例範圍</strong>，實際門檻應以<strong>你的 SPEC 與應用</strong>為準（如工業/醫療要求更嚴）。EMVA 1288 只定義「怎麼量」，門檻由你定。</div>
 
 
+<h2>14.9 補強：標準不是門檻的替代品</h2>
+<p>ISO 與 EMVA 主要定義量測對象、條件與計算方法；「≥ 30 dB」或「MTF50 ≥ 0.5 c/p」仍需由應用、鏡頭、感測器與客戶 SPEC 決定。報告引用標準時要寫版本、測試層級、圖卡/光源、ROI、曝光與是否套用 ISP，避免把不同層級的數字直接比較。</p>
+<table><tr><th>需求</th><th>方法標準</th><th>報告補充</th></tr><tr><td>解析度</td><td>ISO 12233 SFR</td><td>MTF50 單位、中心/角落、銳化狀態</td></tr><tr><td>雜訊/ISO</td><td>ISO 15739/12232</td><td>曝光、色彩通道、temporal/spatial 定義</td></tr><tr><td>感測器天花板</td><td>EMVA 1288</td><td>η、飽和、σ_d、PRNU/DSNU、溫度</td></table>
+<h2>14.10 補強練習：做標準對照矩陣</h2>
+<ol><li>為 SNR/DR、MTF、OECF、flare、shading 各指定一個方法標準。</li><li>為每個標準補上測試條件、輸出指標與專案門檻。</li><li>標記哪些數字來自 EMVA sensor 層，哪些來自相機輸出層。</li></ol>
+
   <div class="outcome">
     <strong>看完這單元你應該能說出：</strong>
     <ul><li>ISO 標準族與各自量測。</li><li>EMVA 1288 的地位。</li><li>CPIQ/DXOMark。</li></ul>

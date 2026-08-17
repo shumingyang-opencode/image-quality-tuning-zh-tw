@@ -101,6 +101,12 @@ SNR = 20·log10(800/31) ≈ 28.2 dB
 <tr><td>DR</td><td>≥ 60 dB</td><td>低 → 飽和/雜訊底方向</td></tr>
 </table>
 
+<h2>7.8 補強：SNR 曲線要分清感測器與 NR</h2>
+<p>先在 RAW 或 NR 關閉狀態量測均值、跨幀 σ 與空間 FPN，建立 EMVA 1288 的 sensor baseline；再開啟 NR，比較平坦區 SNR、紋理保留與 MTF。若 NR 後 SNR 變好但 MTF50 掉很多，這是偏好的取捨，不代表感測器變好。</p>
+<div class="demo-block"><div class="demo-label">NR 回歸表</div><pre>ISO/增益 | RAW SNR | NR 後 SNR | MTF50 | 紋理觀察
+<h2>7.9 補強練習：找出最佳操作點</h2>
+<ol><li>在三個照度與三個增益各拍黑框、灰框、紋理圖。</li><li>繪出 SNR 對照度曲線，標示 read-noise 主導轉為 shot-noise 主導的位置。</li><li>以「平坦區 SNR、MTF50、紋理主觀評分」三欄決定 NR 強度，而不是只看單一 dB。</li></ol>
+
   <div class="outcome">
     <strong>看完這單元你應該能說出：</strong>
     <ul><li>shot/read/dark noise 物理。</li><li>σ 與 SNR 量測。</li><li>NR 與細節的取捨。</li></ul>

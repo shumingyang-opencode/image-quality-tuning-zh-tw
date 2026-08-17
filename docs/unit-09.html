@@ -100,6 +100,12 @@ DR = 20·log10(30000/5) ≈ 75.6 dB（佳）
 <tr><td>飽和容量</td><td>&gt; 10k e⁻</td><td>低 → 感測器製程/增益</td></tr>
 </table>
 
+<h2>9.10 補強：DR、SNR 與 tone mapping 的邊界</h2>
+<p>EMVA 1288 的 DR 是感測器層的飽和訊號與雜訊底之比；tone mapping 只改變輸出階調，不會增加 RAW 的光子數或滿阱容量。報告應分列 sensor DR、輸出 OECF 與 clipping rate，避免把「看得到暗部」誤寫成 DR 提升。</p>
+<div class="demo-block"><div class="demo-label">高反差驗證</div><pre>RAW：記錄最早飽和階與可分辨暗階 → sensor DR
+<h2>9.11 補強練習：分層報告 DR</h2>
+<ol><li>用灰階卡與高反差場景取得 RAW、tone、HDR 三組結果。</li><li>分別寫出 SNR/DR、OECF 平滑度與高光/暗部保留。</li><li>若輸出改善但 sensor DR 不變，在結論中明確標示「tone mapping 改善」而非感測器提升。</li></ol>
+
   <div class="outcome">
     <strong>看完這單元你應該能說出：</strong>
     <ul><li>DR 定義與量測。</li><li>OECF 階調曲線。</li><li>HDR 方法與 tone 取捨。</li></ul>

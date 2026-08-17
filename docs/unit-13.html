@@ -92,6 +92,12 @@
 <tr><td>unit-to-unit</td><td>μ ± 3σ 在 ±5–10%</td><td>超 → 出廠校正/批次管控</td></tr>
 </table>
 
+<h2>13.9 補強：一致性不是只看平均值</h2>
+<p>平均值合格但尾端離群仍可能造成客訴。除了 μ、σ 與 ±3σ，應查看 min/max、箱型分布、批次與時間順序；先用重複量測估計量測噪聲，再把真正的 unit-to-unit 變異分開。AWB、LSC、SNR、MTF50、ΔE 應各自設門檻，不宜用單一總分掩蓋風險。</p>
+<div class="demo-block"><div class="demo-label">SPC 判讀</div><pre>同一台重複 3 次 → 量測 σ_repeat
+<h2>13.10 補強練習：找離群與根因</h2>
+<ol><li>用至少 10 台計算 AWB gains、SNR、MTF50、ΔE 的 μ/σ。</li><li>畫出批次或序號控制圖，標記超過 ±3σ 的樣本。</li><li>回查該台的 EMVA、LSC、溫度與校正版本，寫出可驗證的根因假設。</li></ol>
+
   <div class="outcome">
     <strong>看完這單元你應該能說出：</strong>
     <ul><li>一致性重要性。</li><li>統計方法與門檻。</li><li>校正與把關。</li></ul>

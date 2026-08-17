@@ -95,6 +95,12 @@ DPC 啟用後重測 → 壓制 ✓</pre></div>
 <tr><td>暗電流</td><td>&lt; 50 e⁻/s（一般）</td><td>高 → 降溫/縮曝光</td></tr>
 </table>
 
+<h2>10.9 補強：用標準化測試拆分根因</h2>
+<p>ISO 18844 的 flare、ISO 12233 的 SFR/Moiré 與格線畸變測試不能混成一張「清晰度」分數。先以 RAW 或關閉相關 ISP 的結果定位光學問題，再開啟 DPC、demosaic、畸變校正逐層確認改善是否引入 halo、細節損失或邊緣裁切。</p>
+<table><tr><th>現象</th><th>隔離方法</th><th>可接受證據</th></tr><tr><td>flare 霧化</td><td>固定光源角度、遮光件與曝光</td><td>黑位/對比相對差異</td></tr><tr><td>Moiré</td><td>細網格改變角度與頻率</td><td>假色區域與 MTF 損失</td></tr><tr><td>畸變/色差</td><td>格線圖、中心到邊緣 ROI</td><td>幾何百分比與彩邊像素</td></table>
+<h2>10.10 補強練習：建立問題樹</h2>
+<ol><li>各拍一張黑框、細網格、格線與逆光圖，保存原始影像。</li><li>對每個異常標記是光學、感測器、demosaic、DPC 或校正表問題。</li><li>只改一個模組，回報改善指標與副作用。</li></ol>
+
   <div class="outcome">
     <strong>看完這單元你應該能說出：</strong>
     <ul><li>缺陷像素與 DPC。</li><li>眩光與 ISO 18844。</li><li>Moiré、畸變、色差的判定。</li></ul>

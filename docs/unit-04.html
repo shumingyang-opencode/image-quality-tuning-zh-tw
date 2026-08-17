@@ -97,6 +97,12 @@
 <tr><td>η</td><td>≥ 40%（可見）</td><td>η 低是感測器層問題，ISP 無法救</td></tr>
 </table>
 
+<h2>4.9 補強：AE、SNR 與 DR 的聯動</h2>
+<p>AE 不是只追求灰卡亮度。若快門受限，增加類比增益可維持輸出亮度，但讀出雜訊在暗部的比例可能上升；若能增加曝光，通常能提升光子數與 SNR。AE 的 target、highlight 保護與增益上限必須一起寫入 SPEC，否則同一場景會出現不同的 SNR/DR 結果。</p>
+<div class="demo-block"><div class="demo-label">判讀順序</div><pre>灰卡誤差超標 → 先看 ROI/光源 → 看曝光是否飽和
+<h2>4.10 補強練習：三種場景驗證 AE</h2>
+<ol><li>用灰卡、背光與高反差場景各記錄收斂幀數及最終誤差。</li><li>固定亮度後比較「加曝光」與「加增益」的 SNR，寫出取捨理由。</li><li>把 AE target、上限、門檻與失敗照片加入報告。</li></ol>
+
   <div class="outcome">
     <strong>看完這單元你應該能說出：</strong>
     <ul><li>曝光三要素與 SNR 順序鐵則。</li><li>測光模式與適用場景。</li><li>AE 收斂的驗證公式與門檻。</li></ul>

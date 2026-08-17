@@ -102,6 +102,12 @@ B gain = 190/170 ≈ 1.12
 <tr><td>黑位漂移</td><td>同曝光 σ 小、mean 穩定</td><td>漂移 → 感測器溫度/增益</td></tr>
 </table>
 
+<h2>5.10 補強：AWB、CCM 與 LSC 的順序</h2>
+<p>AWB 依賴可靠的中性像素，LSC 未校正時角落的通道比例可能被誤判為色偏；因此先固定光源與曝光，確認黑位與 LSC，再求 AWB gains，最後用 24 色卡求 CCM。CCM 只能修正色彩空間映射，不能修復飽和、黑位漂移或光源光譜缺失。</p>
+<div class="demo-block"><div class="demo-label">色彩診斷表</div><pre>灰卡 R/G/B 不等 → 查 AWB gains、LSC、黑位
+<h2>5.11 補強練習：跨色溫驗收</h2>
+<ol><li>在 A、D65、TL84 各拍灰卡與 24 色卡。</li><li>記錄 AWB gains、平均/最大 ΔE 與每色塊分布。</li><li>比較單一 CCM 與分色溫 CCM，確認改善不是以灰階偏色換來。</li></ol>
+
   <div class="outcome">
     <strong>看完這單元你應該能說出：</strong>
     <ul><li>AWB gains 的色溫趨勢。</li><li>灰卡校正流程。</li><li>ΔE00 門檻與分色溫 CCM。</li></ul>

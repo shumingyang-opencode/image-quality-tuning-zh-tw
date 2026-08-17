@@ -98,6 +98,12 @@ Sharpening 只救邊緣，不救「真實解析度不足」</pre></div>
 <tr><td>MTF50</td><td>依應用；中心 ≥ 0.4–0.6 c/p</td><td>低 → 確認非雜訊假象</td></tr>
 </table>
 
+<h2>8.9 補強：SFR 結果的可比性</h2>
+<p>MTF50 是頻率指標，不等於「肉眼清晰度」。報告需同時保存 slanted-edge ROI、邊緣角度、曝光、SNR、overshoot/undershoot 與單位。ISO 12233 的 SFR 流程可比較解析度，但 Sharpen 造成的高頻拱起要與 RAW/未銳化結果分開呈現。</p>
+<table><tr><th>結果</th><th>可能根因</th><th>下一個驗證</th></tr><tr><td>中心與角落都低</td><td>對焦、鏡頭、demosaic</td><td>RAW 與不同焦點的 SFR</td></tr><tr><td>只有角落低</td><td>場曲、裝配傾斜、角落 SNR</td><td>四角重複量測與對焦檢查</td></tr><tr><td>MTF 高但 halo 明顯</td><td>Sharpen 過強</td><td>看 overshoot 與未銳化 MTF</td></table>
+<h2>8.10 補強練習：從 chart 到報告</h2>
+<ol><li>固定 ISO 12233 圖卡距離與曝光，量中心及四角 MTF50。</li><li>同一影像以 NR/Sharpen 兩組參數重跑，列出 SNR、MTF50 與 halo。</li><li>以「真實解析度、輸出銳利度、量測可信度」三項寫結論。</li></ol>
+
   <div class="outcome">
     <strong>看完這單元你應該能說出：</strong>
     <ul><li>MTF 原理與定義。</li><li>SFR 量測與 MTF50 門檻。</li><li>demosaic/Sharpen 與解析度關係。</li></ul>

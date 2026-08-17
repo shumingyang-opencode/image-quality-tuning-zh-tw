@@ -97,6 +97,12 @@ LSC 校正後 → 四角 ≈ 190 → 0.95 ✓</pre></div>
 <tr><td>DSNU</td><td>&lt; 5 e⁻</td><td>高 → 黑位校正/固定圖樣移除</td></tr>
 </table>
 
+<h2>6.10 補強：LSC 不只是一張亮度表</h2>
+<p>LSC 增益應由 RAW 四通道分別估計，並在相鄰節點連續插值；過大的增益會同時放大角落雜訊與 PRNU。校正資料要綁定鏡頭、光圈、焦距、模組距離、色溫與曝光，換任一項都要判斷是否重建網格。</p>
+<div class="demo-block"><div class="demo-label">LSC 判讀</div><pre>校正前暗角比低、PRNU 正常 → 鏡頭 shading，重建 LSC
+<h2>6.11 補強練習：網格回測</h2>
+<ol><li>以均勻灰拍校正資料，輸出每通道中心與四角均值。</li><li>套用網格後重測，報告暗角比、通道差與角落 SNR。</li><li>改變色溫或鏡頭距離一次，確認舊網格是否失效。</li></ol>
+
   <div class="outcome">
     <strong>看完這單元你應該能說出：</strong>
     <ul><li>cos⁴ 陰影成因與分通道偏色。</li><li>LSC 網格機制。</li><li>暗角比驗證公式（≥0.9）。</li></ul>

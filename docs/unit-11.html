@@ -103,6 +103,12 @@ unit-to-unit（5台）：AWB gains ±3% ✓</pre></div>
 <div class="callout info"><strong>使用方式：</strong>以上為<strong>典型慣例範圍</strong>，實際門檻應以<strong>你的 SPEC 與應用</strong>為準（如工業/醫療要求更嚴）。EMVA 1288 只定義「怎麼量」，門檻由你定。</div>
 
 
+<h2>11.10 補強：公式的單位與誤差傳播</h2>
+<p>先保持線性域再轉 dB：SNR 的均值與 σ 必須來自同一 ROI、同一 bit depth；若用 10·log10 變異量，必須說明它與 20·log10 振幅比的關係。DR、SNR、MTF50、ΔE 不可直接平均成一個畫質分數，應各自保留原始值與不確定度。</p>
+<div class="demo-block"><div class="demo-label">驗證紀錄最小欄位</div><pre>指標 | 原始量 | 公式 | 單位 | ROI/幀數 | 門檻 | 結果
+<h2>11.11 補強練習：手算與工具交叉驗證</h2>
+<ol><li>用一組均值與 σ 手算 SNR、用腳本或試算表重算。</li><li>用飽和訊號與暗雜訊估算 DR，確認 dB 轉換沒有把線性比誤當 dB。</li><li>把 MTF50 單位、ΔE 白點與 SNR 幀數補進結果表，找出三個原本不可重現的欄位。</li></ol>
+
   <div class="outcome">
     <strong>看完這單元你應該能說出：</strong>
     <ul><li>SNR/DR/ΔE/MTF50 公式。</li><li>門檻值。</li><li>如何用公式速查。</li></ul>

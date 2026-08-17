@@ -86,6 +86,12 @@
 動態範圍  DR             ≥ 60 dB      EMVA</pre></div>
 <p>動手：為你手上專案建立一份驗收清單——這是你之後每個單元量測的「目的地」。</p>
 
+<h2>1.8 補強：從感測器上限到 ISP 指標</h2>
+<p>先用 EMVA 1288 的 RAW 量測建立基準，再判斷 ISP 是否把能力保留下來。η、飽和容量、暗雜訊與 PRNU 決定 SNR/DR 的上限；ISO 12233 的 SFR/MTF、ISO 14524 的 OECF 則驗證相機輸出。若 RAW 已達不到 DR，不能用 tone mapping 宣稱感測器 DR 提升。</p>
+<table><tr><th>發現</th><th>優先查證</th><th>不要先做的事</th></tr><tr><td>中灰 SNR 低</td><td>曝光、類比增益、EMVA 暗雜訊</td><td>直接加強 NR</td></tr><tr><td>角落 MTF 低</td><td>焦平面、LSC、角落 SNR</td><td>只提高 Sharpen</td></tr><tr><td>色卡 ΔE 高</td><td>AWB 灰點、CCM、光源白點</td><td>任意改飽和度</td></tr></table>
+<h2>1.9 補強練習：建立可追溯基線</h2>
+<ol><li>固定 D65、照度、鏡頭、溫度與 FW 版本，拍暗框、均勻灰、24 色卡及 SFR chart。</li><li>把 SNR、DR、ΔE、MTF50、暗角比寫入同一份報告，並為每個數字附公式、單位與 ROI。</li><li>改一個 ISP 參數後只重跑受影響指標，再跑一次全套回歸。</li></ol>
+
   <div class="outcome">
     <strong>看完這單元你應該能說出：</strong>
     <ul><li>IQ 的六個可量測維度。</li><li>ISP 管線與 IQ 模組的對應。</li><li>量測的三大哲學（可再現/可歸因/量化）。</li></ul>
